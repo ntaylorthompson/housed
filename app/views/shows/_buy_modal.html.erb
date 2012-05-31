@@ -1,0 +1,16 @@
+<div id="myModal" class="modal hide fade">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              <h3>Housed - A new kind of live music</h3>
+            </div>
+            <div class="modal-body">
+              <h4>Buy!</h4>
+			  <%= render 'buy_form' %>
+              <hr>
+            </div>
+            <div class="modal-footer">
+			  <%= link_to "Buy!", root_path, confirm: 'Are you sure?', class: "btn btn-primary btn-large", method: :buy %>
+            </div>
+          </div>
+          <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-large">Buy a ticket &raquo;</a>
+

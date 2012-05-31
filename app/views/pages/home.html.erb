@@ -1,0 +1,14 @@
+<% if signed_in? %>
+	<h1>Home</h1><br>
+	User name <br>
+	User stats - shows, attendees, $ revenue<br>
+	Instructions <br>
+	Request payment<br>
+	Coming soon<br>
+	
+	
+<% else %>
+	
+	<%= render 'pages/landing_page'%>
+
+<% end %>

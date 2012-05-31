@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: MyString
+  location: MyString
+  host: MyString
+  host_id: 1
+  musician_id: 1
+  ticket_price: 1
+  tickets_min: 1
+  tickets_max: 1
+
+two:
+  date: MyString
+  location: MyString
+  host: MyString
+  host_id: 1
+  musician_id: 1
+  ticket_price: 1
+  tickets_min: 1
+  tickets_max: 1
