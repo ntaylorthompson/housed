@@ -15,7 +15,7 @@
           <% if signed_in? %>
 			<ul class="nav">
             <% if current_user.musician? %>
-				<li><%= link_to "Create show", new_show_path %></li>
+				<li><%= link_to "Create show", new_user_show_path(current_user) %></li>
 				<li><%= link_to "Manage shows", current_user %></li>
 			<% end%>
 			
@@ -44,8 +44,10 @@
 			</ul>
           <% end %>
 			</ul>
-			<% if current_user.admin? %>
-				<%= render 'layouts/admin_header' %>
+			<% unless current_user.nil? %>
+				<%if current_user.admin? %>
+					<%= render 'layouts/admin_header' %>
+				<% end %>
 			<% end %>
         </ul>
       </div><!--/.nav-collapse -->

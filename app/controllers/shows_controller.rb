@@ -6,10 +6,15 @@ class ShowsController < ApplicationController
                 only: [:index, :edit, :update, :destroy, :following, :followers]
   before_filter :correct_user,   only: [ :edit]
   before_filter :admin_user, only: [:index, :destroy]
+  before_filter :get_user
+  
+  def get_user
+    @user = User.find(params[:user_id])
+  end
 
 
   def index
-    @shows = Show.all
+    @show = @user.shows.find(params[:id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -20,8 +25,7 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
-    @show = Show.find(params[:id])
-    @musician = User.find(@show.user_id).name
+    @show = @user.shows.find(params[:id])
     @guests = @show.guests.count
     @guest = @show.guests.build(params[:guest])
     flash[:show] = @show
@@ -36,7 +40,7 @@ class ShowsController < ApplicationController
   # GET /shows/new
   # GET /shows/new.json
   def new
-    @show = Show.new
+    @show = @user.shows.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,20 +52,20 @@ class ShowsController < ApplicationController
 
   # GET /shows/1/edit
   def edit
-    @show = Show.find(params[:id])
+    @show = @user.shows.find(params[:id])
   end
 
   # POST /shows
   # POST /shows.json
   def create
-    @show = current_user.shows.build(params[:show])
+    @show = @user.shows.build(params[:show])
     @show.build_host(:email => @show.host_email)
     web_string = (0...4).map{65.+(rand(25)).chr}.join
     @show.web_string = (web_string)
     
     respond_to do |format|
       if @show.save
-        format.html { redirect_to @show, notice: 'Show was successfully created.' }
+        format.html { redirect_to user_show_path(@user, @show), notice: 'Show was successfully created.' }
         format.json { render json: @show, status: :created, location: @show }
       else
         format.html { render action: "new" }
@@ -73,7 +77,7 @@ class ShowsController < ApplicationController
   # PUT /shows/1
   # PUT /shows/1.json
   def update
-    @show = Show.find(params[:id])
+    @show = @user.shows.find(params[:id])
 
     respond_to do |format|
       if @show.update_attributes(params[:show])
@@ -89,11 +93,11 @@ class ShowsController < ApplicationController
   # DELETE /shows/1
   # DELETE /shows/1.json
   def destroy
-    @show = Show.find(params[:id])
+    @show = @user.shows.find(params[:id])
     @show.destroy
 
     respond_to do |format|
-      format.html { redirect_to shows_url }
+      format.html { redirect_to user_shows_url(current_user) }
       format.json { head :no_content }
     end
   end

@@ -1,4 +1,6 @@
-<h1>Hosts#show</h1>
+
+
+<h1>Host page</h1><br>
 
 <b>Musician: </b>
 <%= @host.show.user.name %><br>
@@ -6,7 +8,23 @@
 <b>Host: </b>
 <%= @host.email %><br>
 
-<br>[add matrix of invited and signed up people]
+<b>Show website: </b>
+<%= link_to user_show_url(@user, @show), user_show_url(@user, @show) %><br>
+
+<b>Ticket price: </b>
+$<%= @show.ticket_price %><br>
+
+<b>Minimum tickets: </b>
+<%= @show.tickets_min %><br>
+
+<b>Maximum tickets: </b>
+<%= @show.tickets_max %><br>
+
+
+<br>
+<h3> Guests (<%= @show.guests.count %>)</h3>
+<%= render 'guests'%>
 
 <br><br>
 <%= render 'instructions_modal'%>
+

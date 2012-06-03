@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530220524) do
+ActiveRecord::Schema.define(:version => 20120602184652) do
 
   create_table "guests", :force => true do |t|
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "show_id"
+    t.integer  "tickets"
   end
 
   create_table "hosts", :force => true do |t|
@@ -53,6 +54,10 @@ ActiveRecord::Schema.define(:version => 20120530220524) do
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
     t.boolean  "musician",        :default => true
+    t.string   "header"
+    t.string   "mp3_1_url"
+    t.string   "mp3_2_url"
+    t.string   "website"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

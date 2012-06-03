@@ -1,9 +1,28 @@
-<p id="notice"><%= notice %></p>
+<style>
 
-<p>
-<h1>
-  <%= @musician %>
-</h1>House Show<br><br>
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+p  {
+	    margin-left: auto;
+	    margin-right: auto;
+	    width: 13em
+	}
+
+</style>
+
+<div class="hero-unit">
+	<img usemap="#_bc_customheader_map"src=<%=@user.header%> >
+	
+
+<h1 align="center">
+<%= @user.name %>
+</h1>
+
+<p align="center" style="font-size:small">House Show</p>
+<br>
 
 
 <p>
@@ -34,22 +53,24 @@
 	</p>
 <% end %>
 
-<% if signed_in? %>
-<p>
-  <b>Tickets min:</b>
-  <%= @show.tickets_min %>
-</p>
+
 
 <p>
-  <b>Tickets max:</b>
-  <%= @show.tickets_max %>
+<br><b>Listen here:</b>
+
+
+
+
+
+<iframe width="46" height="23" style="position: relative; width: 46px; height: 23px;" src="http://bandcamp.com/EmbeddedPlayer/v=2/track=4124094065/size=short/bgcol=FFFFFF/linkcol=4285BB/" allowtransparency="true" frameborder="0"><a href="http://music.daniellevigoans.com/track/heights-so-high">Heights So High by Daniel Levi Goans</a></iframe>
+<iframe width="46" height="23" style="position: relative; width: 46px; height: 23px;" src="http://bandcamp.com/EmbeddedPlayer/v=2/track=2851766590/size=short/bgcol=FFFFFF/linkcol=4285BB/" allowtransparency="true" frameborder="0"><a href="http://music.daniellevigoans.com/track/mary-land">Mary-land by Daniel Levi Goans</a></iframe>
 </p>
 
-
-	<%= link_to 'Edit', edit_show_path(@show) %> |
-	<%= link_to 'Back', shows_path %>
-
-<% else %>
+<div align="center">
+	<br><br>
 	<%= render 'buy_modal' %>
-<% end %>
 
+
+</div>
+
+</div>

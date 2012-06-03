@@ -1,12 +1,14 @@
 Housed::Application.routes.draw do
   get "hosts/show"
 
-  resources :shows
+  resources :users do
+    resources :shows
+  end
+  
   resources :guests
   resources :hosts
 
-  resources :users do
-  end
+
     
   resources :sessions, :only => [:new, :create, :destroy]
 
@@ -25,6 +27,9 @@ Housed::Application.routes.draw do
   match '/thanks', :to => 'guests#thanks'
   
   match '/host/:web_string', :to => 'hosts#show' , :as =>'host'
+  
+  
+  match '/sample', :to => 'users#sample'
 
   
   

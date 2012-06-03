@@ -84,6 +84,9 @@ class UsersController < ApplicationController
     end
   end
   
+  def sample
+  end
+  
   private
   
     def correct_user
