@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20120602184652) do
     t.datetime "updated_at",                  :null => false
     t.integer  "tickets_sold", :default => 0
     t.date     "date"
-    t.string   "host_email"
     t.string   "web_string"
+    t.string   "host_email"
   end
 
   add_index "shows", ["web_string"], :name => "index_shows_on_web_string", :unique => true

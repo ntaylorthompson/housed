@@ -42,7 +42,7 @@ class ShowsController < ApplicationController
   def new
     @show = @user.shows.new
 
- #   respond_to do |format|
+ #   respond_to do |format|               taken out for Heroku
   #    format.html # new.html.erb
    #   format.json { render json: @show }
   #  end
