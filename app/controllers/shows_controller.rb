@@ -42,10 +42,10 @@ class ShowsController < ApplicationController
   def new
     @show = @user.shows.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @show }
-    end
+ #   respond_to do |format|
+  #    format.html # new.html.erb
+   #   format.json { render json: @show }
+  #  end
   end
 
 
