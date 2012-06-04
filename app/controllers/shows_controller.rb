@@ -28,7 +28,7 @@ class ShowsController < ApplicationController
     @show = @user.shows.find(params[:id])
     @guests = @show.guests.count
     @guest = @show.guests.build(params[:guest])
-    flash[:show] = @show
+#    flash[:show] = @show
  #   flash.keep    
 
     respond_to do |format|
@@ -59,7 +59,7 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = @user.shows.build(params[:show])
-    @show.build_host(:email => @show.host_email)
+    @show.build_host(:email => params[:show][:host_email])
     web_string = (0...4).map{65.+(rand(25)).chr}.join
     @show.web_string = (web_string)
     
