@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602184652) do
+ActiveRecord::Schema.define(:version => 20120606172823) do
 
   create_table "guests", :force => true do |t|
     t.string   "email"
@@ -48,15 +48,15 @@ ActiveRecord::Schema.define(:version => 20120602184652) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           :default => false
-    t.boolean  "musician",        :default => true
-    t.string   "header"
-    t.string   "mp3_1_url"
-    t.string   "mp3_2_url"
+    t.boolean  "admin",                          :default => false
+    t.boolean  "musician",                       :default => true
+    t.text     "header",          :limit => 255
+    t.text     "mp3_1_url",       :limit => 255
+    t.text     "mp3_2_url",       :limit => 255
     t.string   "website"
   end
 
