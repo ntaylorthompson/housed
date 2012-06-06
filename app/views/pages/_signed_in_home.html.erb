@@ -1,0 +1,35 @@
+<style>
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+</style>
+
+<div class="hero-unit">
+	<% if current_user.header.blank? %>
+		<h1><%= current_user.name %></h1>
+	<% else %>
+		<img usemap="#_bc_customheader_map"src=<%=current_user.header%> >
+	<% end %>
+</div>
+	<br>
+	<p>
+	  <b>Total shows:</b>
+	  <%= %>
+	</p>
+
+	<p>
+	  <b>Total guests:</b>
+	  <%=  %>
+	</p>
+
+	<p>
+	  <b>Total revenue:</b>
+	  <%=  %>
+	</p>
+
+	Instructions <br>
+	Request payment<br>
+	Coming soon<br>
