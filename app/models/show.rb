@@ -1,5 +1,5 @@
 class Show < ActiveRecord::Base
-  attr_accessible :date, :host_email, :location, :ticket_price, :tickets_max,
+  attr_accessible :date, :host_em, :location, :ticket_price, :tickets_max,
                   :tickets_min
 #  belongs_to :host_id, class_name: "User"
   belongs_to :user
