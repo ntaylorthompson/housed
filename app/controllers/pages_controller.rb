@@ -14,4 +14,13 @@ class PagesController < ApplicationController
   def welcome
   end
   
+  def artists
+  end
+  
+  def hosts
+  end
+  
+  def fans
+  end
+  
 end

@@ -1,4 +1,6 @@
 Housed::Application.routes.draw do
+  resources :fans
+
   get "hosts/show"
 
   resources :users do
@@ -23,6 +25,10 @@ Housed::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   
   match '/welcome', :to => 'pages#welcome'
+  match '/artist_info', :to => 'pages#artists'
+  match '/host_info', :to => 'pages#hosts'
+  match '/fan_info', :to => 'pages#fans'
+  
   
   match '/thanks', :to => 'guests#thanks'
   

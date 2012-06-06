@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @fan.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @fan.email %>
+</p>
+
+<p>
+  <b>Host interest:</b>
+  <%= @fan.host_interest %>
+</p>
+
+<p>
+  <b>Fan interest:</b>
+  <%= @fan.fan_interest %>
+</p>
+
+
+<%= link_to 'Edit', edit_fan_path(@fan) %> |
+<%= link_to 'Back', fans_path %>
