@@ -1,0 +1,18 @@
+Mailer#show_reminder
+
+<%= @greeting %>,
+
+Thanks for purchasing a ticket to see <%= @user.name %> play live! The show will be on <%= @show.date %> at <%= @host.name %>'s house: 
+
+<%= @show.address %>
+
+The music will begin at <%= @show.time %>, so please be sure to arrive 30 minutes early. If you have any question, please contact <%= @user.name %> at <%= @show.host_em %>. 
+
+Thanks for coming - you're in for a great night of live music!
+
+
+Housed.com 
+on behalf of <%= @user.name %>
+
+
+<%= render(:partial => './fan_signup') %>

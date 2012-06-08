@@ -16,6 +16,10 @@
     <%= f.date_select :date %>
   </div>
   <div class="field">
+    <%= f.label :time %> <br />
+    <%= f.time_select :time %>  <b>Guests will arrive 30 minutes before the scheduled time.</b>
+  </div>
+  <div class="field">
     <%= f.label :location %><br />
     <%= f.text_field :location %>
   </div>

@@ -1,0 +1,19 @@
+Mailer#show_reminder
+
+Mailer#show_reminder
+
+<%= @greeting %>,
+
+We wanted to remind you about <%= @user.name %>'s show tonight (<%= @show.date %>) at <%= @host.name %>'s house: 
+
+<%= @show.address %>
+
+The music starts at <%= @show.time %>, so get there 30 minutes early not to miss out. Enjoy the music!
+
+
+Housed.com 
+on behalf of <%= @user.name %>
+
+<% if not @fan.interested.blank? %>
+	<%= render(:partial => './fan_signup') %>
+<% end %>

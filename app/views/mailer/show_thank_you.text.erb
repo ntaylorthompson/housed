@@ -1,0 +1,15 @@
+Mailer#show_thank_you
+
+<%= @greeting %>,
+
+We hope you made it and enjoyed the music yesterday! Thank you again for supporting <%= @user.name %> and live music. 
+
+To find out more about <%= @user.name.first %>, please visit <%= @user.website %>. 
+
+If you have questions or suggestions for Housed as we build a new music ecosystem, email us at EXAMPLE@GMAIL>COM. We're doing this for fans and for musicians - and really want to hear from you! <% if not @fan.interested.blank? %>And click HERE if you want to know about future shows in your area.<% end %> 
+
+Thanks for making the music possible. 
+
+
+Housed.com 
+on behalf of <%= @user.name %>
