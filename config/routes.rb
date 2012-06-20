@@ -30,7 +30,8 @@ Housed::Application.routes.draw do
   match '/host_info', :to => 'pages#hosts'
   match '/fan_info', :to => 'pages#fans'
   match '/email_settings', :to => 'pages#email_settings'
-  
+  match '/payment_error', :to => 'pages#payment_error'
+  match '/guest_thank_you', :to => 'pages#guest_thank_you'
   
   match '/thanks', :to => 'guests#thanks'
   

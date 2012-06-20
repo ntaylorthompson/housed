@@ -1,0 +1,10 @@
+development: &sandbox
+  access_key: <your sandbox access key>
+  secret_key: <your sandbox secret key>
+
+test:
+  <<: *sandbox
+
+production:
+  access_key: <your access key>
+  secret_key: <your secret key>
