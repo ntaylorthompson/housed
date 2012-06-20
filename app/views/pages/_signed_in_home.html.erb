@@ -16,36 +16,28 @@ img {
 </div>
 	<br>
 	<p>
-	  <b>Total shows:</b>
-	  <%= %>
+	  <b>Total shows:
+	  <%= current_user.shows.count %> </b>
 	</p>
 
 	<p>
-	  <b>Total guests:</b>
-	  <%=  %>
+	  <b>Total guests:
+	  <%= @guests %></b>
 	</p>
 
 	<p>
-	  <b>Total revenue:</b>
-	  <%=  %>
+	  <b>Total revenue:
+	  <%=  %></b>
 	</p>
 
 	<p>
-	  <b>Next show:</b>
-	  <%=  %>
-	</p>
-
-	<p>
-	  <b>Host instructions:</b>
-	  <%=  %>
-	</p>
-
-	<p>
-	  <b>Request payment:</b>
-	  <%=  %>
+	  <b>Next show:
+	  <%=  %></b>
 	</p>
 
 	<p>
 	  <b>Coming soon:</b>
 	  <%=  %>
 	</p>
+	<p><%= link_to "Request payment &raquo;".html_safe , host_instructions_path, class: "btn" %></p>
+	<p><%= link_to "Host instructions &raquo;".html_safe , host_instructions_path, class: "btn" %></p>

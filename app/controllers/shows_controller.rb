@@ -65,6 +65,7 @@ class ShowsController < ApplicationController
     
     respond_to do |format|
       if @show.save
+#        Mailer.new_show(@user, @show).deliver
         format.html { redirect_to user_show_path(@user, @show), notice: 'Show was successfully created.' }
         format.json { render json: @show, status: :created, location: @show }
       else

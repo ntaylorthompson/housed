@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @shows = @user.shows.paginate(page: params[:page])
+    
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
 
   # POST /users
   # POST /users.json
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       if @user.save
-        Mailer.user_signup(@user).deliver
+#        Mailer.user_signup(@user).deliver
         format.html { redirect_to welcome_path, notice: 'User was successfully created.' }
         format.json { render json: welcome_path, status: :created, location: welcome_path }
         sign_in(@user)
@@ -72,6 +74,11 @@ class UsersController < ApplicationController
       end
     end
   end
+  
+  def advanced_edit
+  end
+
+  
 
   # DELETE /users/1
   # DELETE /users/1.json

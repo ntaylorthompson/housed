@@ -15,10 +15,12 @@
           <% if signed_in? %>
 			<ul class="nav">
             <% if current_user.musician? %>
-				<li><%= link_to "Create show", new_user_show_path(current_user) %></li>
-				<li><%= link_to "Manage shows", current_user %></li>
+				<li><%= link_to "Create", new_user_show_path(current_user) %></li>
+				<li><%= link_to "Manage", current_user %></li>
 			<% end%>
-			
+			<li><%= link_to "Host" %></li>
+			<li><%= link_to "Find" %></li>
+	
 			<li><%= link_to "Help", help_path %></li>
 			</ul>			
 			
@@ -28,8 +30,9 @@
 	                Account <b class="caret"></b>
 	              </a>
 	              <ul class="dropdown-menu">
-	                <li><%= link_to "User settings", edit_user_path(current_user) %></li>
-	                <li><%= link_to "Email settings", edit_user_path(current_user) %></li>
+	                <li><%= link_to "Basic user settings", edit_user_path(current_user) %></li>
+	                <li><%= link_to "Advanced user settings", edit_user_path(current_user) %></li>
+	                <li><%= link_to "Email settings", email_settings_path %></li>
 	                <li class="divider"></li>
 	                <li>
 	                  <%= link_to "Sign out", signout_path, method: "delete" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120607165438) do
+ActiveRecord::Schema.define(:version => 20120619201248) do
 
   create_table "fans", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20120607165438) do
     t.text     "mp3_1_url",       :limit => 255
     t.text     "mp3_2_url",       :limit => 255
     t.string   "website"
+    t.integer  "zip"
+    t.integer  "travel_radius"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

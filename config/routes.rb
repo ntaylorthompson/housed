@@ -4,10 +4,11 @@ Housed::Application.routes.draw do
   get "hosts/show"
 
   resources :users do
-    resources :shows
+    resources :shows do
+      resources :guests 
+    end
   end
   
-  resources :guests
   resources :hosts
 
 
@@ -28,6 +29,7 @@ Housed::Application.routes.draw do
   match '/artist_info', :to => 'pages#artists'
   match '/host_info', :to => 'pages#hosts'
   match '/fan_info', :to => 'pages#fans'
+  match '/email_settings', :to => 'pages#email_settings'
   
   
   match '/thanks', :to => 'guests#thanks'
@@ -36,6 +38,8 @@ Housed::Application.routes.draw do
   
   
   match '/sample', :to => 'users#sample'
+  
+  match 'host_instructions', :to => 'pages#host_instructions'
 
   
   

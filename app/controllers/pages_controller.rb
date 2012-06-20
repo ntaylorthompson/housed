@@ -1,5 +1,15 @@
 class PagesController < ApplicationController
+  before_filter :signed_in_user, only: :email_settings
+  
+  
   def home
+    @guests = 0
+    if not current_user.nil?
+      current_user.shows.each do |show|
+        @guests += show.tickets_sold
+      end
+    end
+    
   end
 
   def help
@@ -23,4 +33,9 @@ class PagesController < ApplicationController
   def fans
   end
   
+  def email_settings
+  end
+  
+  def host_instructions
+  end
 end
