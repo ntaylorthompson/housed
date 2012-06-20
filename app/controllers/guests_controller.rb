@@ -6,7 +6,10 @@ class GuestsController < ApplicationController
     @show = Show.find(params[:show_id] )
   end
   
-  
+  def show
+    get_show
+    @guest = @show.guests.find(params[:id])
+  end
   
   def new
     @show = Show.find(params[:show_id] )
