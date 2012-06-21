@@ -1,4 +1,6 @@
 Housed::Application.routes.draw do
+  resources :payments
+
   resources :fans
 
   get "hosts/show"
@@ -41,6 +43,9 @@ Housed::Application.routes.draw do
   match '/sample', :to => 'users#sample'
   
   match 'host_instructions', :to => 'pages#host_instructions'
+  
+  resources :payments
+    match '/confirm_payment' => 'payments#confirm'
 
   
   

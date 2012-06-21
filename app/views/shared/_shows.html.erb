@@ -1,7 +1,7 @@
 <table>
   <tr>
-    <th>Date</th>
-    <th>Time</th>
+    <th>Date </th>
+    <th>Time </th>
     <th>Location</th>
     <th>Host</th>
 
@@ -16,8 +16,8 @@
 
 <% @shows.each do |show| %>
   <tr>
-    <td><%= show.date %></td>
-    <td><%= show.time %></td>
+    <td><%= show.date.to_formatted_s(:rfc822)    %></td>
+    <td><%= show.time.to_formatted_s(:time) %></td>
     <td><%= show.location %></td>
 	<td><%= show.host.email %></td>
 

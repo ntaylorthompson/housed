@@ -1,50 +1,30 @@
-<h1>
-Your tickets - is this order right?
-</h1><br>
-<p>
-  <b>Musician:</b>
-  <%= @show.user.name %>
-</p>
-<p>
-  <b>Host:</b>
-  <%= @show.host_em %>
-</p>
-<p>
-  <b>Your email:</b>
-  <%= @guest.email %>
-</p>
+<h1>Listing payments</h1>
 
-<p>
-  <b>Show location:</b>
-  <%= @show.location %>
-</p>
-<p>
-  <b>Show date:</b>
-  <%= @show.date  %>
-</p>
-<p>
-  <b>Show time:</b>
-  <%= @show.time  %>
-</p>
-<p>
-  <b>Show location:</b>
-  <%= @show.location %>
-</p>
+<table>
+  <tr>
+    <th>Guest</th>
+    <th>Amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payments.each do |payment| %>
+  <tr>
+    <td><%= payment.guest_id %></td>
+    <td><%= payment.amount %></td>
+    <td><%= link_to 'Show', payment %></td>
+    <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+    <td><%= link_to 'Destroy', payment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payment', new_payment_path %>
 
 
-<p>
-  <b>Ticket price:</b>
-  $<%= @show.ticket_price %> each
-</p>
-
-<p>
-  <b>Tickets:</b>
-  <%= @guest.tickets %>
-</p>
-<p>
-  <b>Total cost:</b>
-  $<%= @guest.tickets * @show.ticket_price  %>
-</p><br>
 
 <form action="https://authorize.payments-sandbox.amazon.com/pba/paypipeline" method="post">
 	<input type="hidden" name="returnUrl" value="http://localhost:3000/confirm_payment" >
@@ -65,3 +45,16 @@ Your tickets - is this order right?
 <!--  <input type="hidden" name="signature" value="J7UowpPHIIjHj8gFxPhzOU1K6ub96tHO2aBQt5wWsns=" > -->
   <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0">
 </form>
+
+
+
+
+
+<%= amazon_simple_pay_form_tag do %>
+  $ <%= text_field_tag 'amount' %><br/><br/>
+  <%= hidden_field_tag 'referenceId', 'ref' %>
+  <%= hidden_field_tag 'description', 'Ticket(s)' %>
+  <%= image_submit_tag('/images/pay_me.gif') %>
+<% end %>
+
+
