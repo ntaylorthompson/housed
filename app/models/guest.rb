@@ -1,5 +1,5 @@
 class Guest < ActiveRecord::Base
-  attr_accessible :email, :tickets
+  attr_accessible :email, :tickets, :payment_id, :interested
   belongs_to :show
   has_one :payment
   after_create :update_tickets_sold

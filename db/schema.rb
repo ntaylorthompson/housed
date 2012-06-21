@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621150653) do
+ActiveRecord::Schema.define(:version => 20120621171632) do
 
   create_table "fans", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20120621150653) do
     t.integer  "show_id"
     t.integer  "tickets"
     t.boolean  "interested"
+    t.integer  "payment_id"
   end
 
   create_table "hosts", :force => true do |t|

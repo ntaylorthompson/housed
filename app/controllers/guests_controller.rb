@@ -15,6 +15,7 @@ class GuestsController < ApplicationController
     @show = Show.find(params[:show_id] )
     @guest = @show.guests.new
   end
+
   
   
   def create
@@ -41,5 +42,21 @@ class GuestsController < ApplicationController
   
   def thanks
   end
+  
+  def update
+    get_show
+    @guest = @show.guests.find(params[:id])
+
+    respond_to do |format|
+      if @guest.update_attributes(params[:guest])
+        format.html { redirect_to [@show.user, @show, @guest], notice: 'User was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @guest.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   
 end

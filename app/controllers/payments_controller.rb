@@ -9,7 +9,10 @@ class PaymentsController < ApplicationController
         :transaction_id     => params[:transactionId]
       )
       if @payment.save
-#        redirect_to(@payment, :notice => 'Payment was successfully created.')
+        show= Show.find(params[:referenceId].to_i)
+        guest = show.guests.build(payment_id: @payment.id, email: params[:buyerEmail], tickets: (@payment.amount/show.ticket_price).round )
+        guest.save
+        redirect_to( [show.user, show,guest], :notice => 'Payment was successfully created.')
       else
         redirect_to :action => "index"
       end

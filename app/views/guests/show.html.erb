@@ -1,67 +1,46 @@
-<h1>
-Your tickets - is this order right?
-</h1><br>
+<h1>Thanks!</h1><br>
 <p>
   <b>Musician:</b>
   <%= @show.user.name %>
 </p>
-<p>
+<p>	
   <b>Host:</b>
   <%= @show.host_em %>
 </p>
-<p>
-  <b>Your email:</b>
-  <%= @guest.email %>
-</p>
 
 <p>
-  <b>Show location:</b>
+  <b>Location:</b>
   <%= @show.location %>
 </p>
 <p>
-  <b>Show date:</b>
+  <b>Date:</b>
   <%= @show.date  %>
 </p>
 <p>
-  <b>Show time:</b>
+  <b> Time:</b>
   <%= @show.time  %>
 </p>
-<p>
-  <b>Show location:</b>
-  <%= @show.location %>
-</p>
-
-
-<p>
-  <b>Ticket price:</b>
-  $<%= @show.ticket_price %> each
-</p>
-
 <p>
   <b>Tickets:</b>
   <%= @guest.tickets %>
 </p>
 <p>
   <b>Total cost:</b>
-  $<%= @guest.tickets * @show.ticket_price  %>
+  <%= number_to_currency(@guest.tickets * @show.ticket_price)  %>
 </p><br>
 
-<form action="https://authorize.payments-sandbox.amazon.com/pba/paypipeline" method="post">
-	<input type="hidden" name="returnUrl" value="http://localhost:3000/confirm_payment" >
-  <input type="hidden" name="ipnUrl" value="http://yourwebsite.com/instantpaymentnotification" >
-  <input type="hidden" name="processImmediate" value="1" >
-<!--  <input type="hidden" name="signatureMethod" value="HmacSHA256" > -->
-  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
-  <input type="hidden" name="collectShippingAddress" value="0" >
-  <input type="hidden" name="isDonationWidget" value="0" >
-  <input type="hidden" name="amazonPaymentsAccountId" value="INSWGIJTBPMN3TZA4NGUZEVRF2RP14NKH9K2D2" >
-  <input type="hidden" name="referenceId" value="ref" >
-  <input type="hidden" name="cobrandingStyle" value="logo" >
-  <input type="hidden" name="immediateReturn" value="1" >
-  <input type="hidden" name="amount" value="USD 10" >
-  <input type="hidden" name="description" value="Ticket" >
-  <input type="hidden" name="abandonUrl" value="http://yourwebsite.com/abandon" >
-<!--  <input type="hidden" name="signatureVersion" value="2" > -->
-<!--  <input type="hidden" name="signature" value="J7UowpPHIIjHj8gFxPhzOU1K6ub96tHO2aBQt5wWsns=" > -->
-  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0">
-</form>
+<% if @guest.interested.nil? %>
+<h3>Would you like to sign up to look for other house shows in your area?</h3><br>
+
+	<%= form_for([@show.user, @show, @guest]) do |f| %>
+	    <%= f.hidden_field :interested, :value => 0 %>
+		<%= f.submit "No &raquo;".html_safe, :class => "btn btn-primary btn-large" %>
+	<% end %>
+	<%= form_for([@show.user, @show, @guest]) do |f| %>
+	    <%= f.hidden_field :interested, :value => 1 %>
+		<%= f.submit "Yes &raquo;".html_safe, :class => "btn btn-primary btn-large"%>
+	<% end %>
+<% elsif @guest.interested? %>
+	<h3>Great! We'll let you know as soon as searchable shows goes live.</h3>
+<% end %>
+
