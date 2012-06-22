@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621171632) do
+ActiveRecord::Schema.define(:version => 20120622172100) do
 
   create_table "fans", :force => true do |t|
     t.string   "name"
@@ -24,12 +24,15 @@ ActiveRecord::Schema.define(:version => 20120621171632) do
 
   create_table "guests", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "show_id"
-    t.integer  "tickets"
+    t.integer  "tickets",           :default => 0
     t.boolean  "interested"
     t.integer  "payment_id"
+    t.float    "cost"
+    t.text     "ticket_emails"
+    t.integer  "tickets_requested"
   end
 
   create_table "hosts", :force => true do |t|
@@ -46,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20120621171632) do
     t.datetime "updated_at",     :null => false
     t.string   "transaction_id"
   end
+
+  add_index "payments", ["guest_id"], :name => "index_payments_on_guest_id"
 
   create_table "shows", :force => true do |t|
     t.string   "location"

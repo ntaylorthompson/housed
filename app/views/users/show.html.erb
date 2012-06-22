@@ -1,19 +1,24 @@
 <% provide(@shows, @user.name) %>
 
+
+<h3>Past shows (<%= @user.shows.count - @shows.count %>)</h3>
+
+<br>
+
+
 <div class="row">
   <aside class="span4">
     <section>
     </section>
   </aside>
 
-  <div class="span8">
+  <div class="span10">
     <% if @user.shows.any? %>
-      <h3>Shows (<%= @user.shows.count %>)</h3>     
-	 <ol class="shows">
-		<%= render 'shared/shows'%>
+      <h3>Upcoming shows (<%= @shows.count %>)</h3> 	  
 
-      </ol>
-	  <%= will_paginate @shows %>
+		<%= render 'shared/shows'%>
+<%= will_paginate @shows %>
+
 
     <% end %>
   </div>

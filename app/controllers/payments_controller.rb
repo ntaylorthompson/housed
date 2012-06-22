@@ -4,15 +4,17 @@ class PaymentsController < ApplicationController
 
 
   def confirm
-      @payment = Payment.new(
+      @guest = Guest.find(params[:referenceId].to_i)
+      show = @guest.show
+      @payment = @guest.payment.build(
         :amount => transaction_amount(params[:transactionAmount]),
         :transaction_id     => params[:transactionId]
       )
       if @payment.save
-        show= Show.find(params[:referenceId].to_i)
-        guest = show.guests.build(payment_id: @payment.id, email: params[:buyerEmail], tickets: (@payment.amount/show.ticket_price).round )
-        guest.save
-        redirect_to( [show.user, show,guest], :notice => 'Payment was successfully created.')
+
+        @guest.update_attributes( email: params[:buyerEmail], tickets: (@payment.amount/show.ticket_price).round )
+        @guest.save
+        redirect_to( [show.user, show,@guest], :notice => 'Payment was successfully created.')
       else
         redirect_to :action => "index"
       end
@@ -51,14 +53,14 @@ class PaymentsController < ApplicationController
 
   # GET /payments/1
   # GET /payments/1.json
-  def show
-    @payment = Payment.find(params[:id])
+ # def show
+  #  @payment = Payment.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @payment }
-    end
-  end
+   # respond_to do |format|
+    #  format.html # show.html.erb
+     # format.json { render json: @payment }
+    #end
+#  end
 
   # GET /payments/new
   # GET /payments/new.json

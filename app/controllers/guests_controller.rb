@@ -16,7 +16,11 @@ class GuestsController < ApplicationController
     @guest = @show.guests.new
   end
 
-  
+  def buy
+    @show = Show.find(params[:show_id] )
+    @guest = Guest.find(params[:id])
+    @cost = @show.ticket_price * @guest.tickets_requested
+  end
   
   def create
     @show = Show.find(params[:show_id] )
@@ -24,7 +28,7 @@ class GuestsController < ApplicationController
     
     respond_to do |format|
       if @guest.save
-        format.html { redirect_to root_path, notice: 'Your purchase was successful. Thanks!' }
+        format.html { redirect_to "/users/#{params[:user_id]}/shows/#{params[:show_id]}/guests/#{@guest.id}/buy", notice: 'Your purchase was successful. Thanks!' }
       else
         format.html { render action: "new" }
       end

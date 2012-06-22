@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @shows = @user.shows.paginate(page: params[:page])
+    @shows = @user.shows.where("date > ?", Time.now.beginning_of_day).paginate(:page => params[:page], :per_page => 5)
     
 
     respond_to do |format|

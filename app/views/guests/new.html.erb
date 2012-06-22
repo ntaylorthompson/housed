@@ -27,11 +27,5 @@
 </p><br>
 
 <h3>Choose how many tickets at <b>$<%= @show.ticket_price %></b> each:</h3><br>
-<%= amazon_simple_pay_form_tag do %>
-  $  <%= select_tag 'amount', "<option>#{@show.ticket_price}</option> <option>#{@show.ticket_price*2}</option> 
-							   <option>#{@show.ticket_price*3}</option> <option>#{@show.ticket_price*4}</option>
-							   <option>#{@show.ticket_price*5}</option>".html_safe %><br/><br/>
-  <%= hidden_field_tag 'referenceId', params[:show_id] %>
-  <%= hidden_field_tag 'description', 'Ticket(s)' %>
-  <%= image_submit_tag('http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif') %>
-<% end %>
+
+<%= render "form"%>

@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :tickets %><br />
-    <%= f.number_field :tickets %>
-  </div>
+<%= f.select :tickets_requested, [1,2,3,4,5]%>
+
+<h3>Enter the email of each person in your party separated by a space, for ticketing purposes. </h3><br>
+    <%= f.text_area :ticket_emails, size: "50x1" %>
+
+
+    
+
 	
 
   <div class="actions">

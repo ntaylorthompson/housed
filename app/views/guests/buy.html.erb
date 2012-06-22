@@ -1,0 +1,31 @@
+<h1>Buy tickets</h1><br>
+
+<p>
+  <b>Musician:</b>
+  <%= @show.user.name %>
+</p>
+<p>
+  <b>Host:</b>
+  <%= @show.host_em %>
+</p>
+<p>
+  <b>Show location:</b>
+  <%= @show.location %>
+</p>
+<p>
+  <b>Show date:</b>
+  <%= @show.date  %>
+</p>
+<p>
+  <b>Show time:</b>
+  <%= @show.time  %>
+</p><br>
+
+<h3>Click to purchase <%= @guest.tickets %> tickets for <%= number_to_currency(@cost) %> total:</h3><br>
+
+<%= amazon_simple_pay_form_tag do %>
+  <%= hidden_field_tag 'amount', @cost %>
+  <%= hidden_field_tag 'referenceId', params[:id] %>
+  <%= hidden_field_tag 'description', 'Ticket(s)' %>
+  <%= image_submit_tag('http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif') %>
+<% end %>

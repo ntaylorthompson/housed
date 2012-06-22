@@ -7,7 +7,9 @@ Housed::Application.routes.draw do
 
   resources :users do
     resources :shows do
-      resources :guests 
+      resources :guests do
+        get 'buy', :on => :member
+      end
     end
   end
   
@@ -44,8 +46,11 @@ Housed::Application.routes.draw do
   
   match 'host_instructions', :to => 'pages#host_instructions'
   
+#  match '/users/:user_id/shows/:show_id/guests/:id/buy(.:format)', :to => 'guests#buy'
+  
   resources :payments
     match '/confirm_payment' => 'payments#confirm'
+    
 
   
   
