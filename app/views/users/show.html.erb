@@ -2,7 +2,9 @@
 
 
 <h3>Past shows (<%= @user.shows.count - @shows.count %>)</h3>
-
+Outstanding payment: <%= number_to_currency(@money_owed)%><br>
+For <%= @total_fans%> fans and <%= @finished_shows.count %> shows. 
+<br>
 <br>
 
 

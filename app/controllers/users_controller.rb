@@ -20,8 +20,15 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @shows = @user.shows.where("date > ?", Time.now.beginning_of_day).paginate(:page => params[:page], :per_page => 5)
+    @shows = @user.shows.where("date > ?", Time.now.end_of_day).paginate(:page => params[:page], :per_page => 5)
+    @finished_shows = @user.shows.where(complete: nil, date: 10.years.ago..Time.now.end_of_day)
     
+    @money_owed = 0
+    @total_fans = 0 
+    @finished_shows.each do |i| 
+      @money_owed += i.tickets_sold * i.ticket_price
+      @total_fans += i.tickets_sold
+    end
 
     respond_to do |format|
       format.html # show.html.erb

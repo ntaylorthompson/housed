@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622172100) do
+ActiveRecord::Schema.define(:version => 20120622185027) do
 
   create_table "fans", :force => true do |t|
     t.string   "name"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20120622172100) do
     t.string   "host_email"
     t.string   "host_em"
     t.time     "time"
+    t.boolean  "complete"
   end
 
   add_index "shows", ["web_string"], :name => "index_shows_on_web_string", :unique => true
