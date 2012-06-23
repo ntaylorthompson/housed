@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :time %> <br />
-    <%= f.time_select :time %>  <b>Guests will arrive 30 minutes before the scheduled time.</b>
+    <%= f.time_select :time, {:minute_step => 15} %>  <b>Guests will arrive 30 minutes before the scheduled time.</b>
   </div>
   <div class="field">
     <%= f.label :location %><br />
@@ -31,11 +31,11 @@
 
   <div class="field">
     <%= f.label :ticket_price %><br />
-    <%= f.number_field :ticket_price %>
+    <%= f.select :ticket_price, [10,15,20] %>
   </div>
   <div class="field">
     <%= f.label :tickets_min %><br />
-    <%= f.number_field :tickets_min %>
+    <%= f.select :tickets_min, [20,25,30] %>
   </div>
   <div class="field">
     <%= f.label :tickets_max %><br />

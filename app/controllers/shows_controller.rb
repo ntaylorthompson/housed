@@ -6,21 +6,31 @@ class ShowsController < ApplicationController
                 only: [:index, :edit, :update, :destroy, :following, :followers]
   before_filter :correct_user,   only: [ :edit]
   before_filter :admin_user, only: [:index, :destroy]
-  before_filter :get_user
+  
+  #THIS IS REALLY MESSY NOW
+  before_filter :get_user, except: [:index, :edit]
   
   def get_user
     @user = User.find(params[:user_id])
   end
 
-
   def index
-    @show = @user.shows.find(params[:id])
+    @shows = Show.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @shows }
     end
   end
+    
+#OLD INDEX - FOR NESTED ROUTES, MAY BE NEEDED SOMEWHERE
+#  def index
+#    @show = @user.shows.find(params[:id])
+#    respond_to do |format|
+ #     format.html # index.html.erb
+  #    format.json { render json: @shows }
+   # end
+  #end
 
   # GET /shows/1
   # GET /shows/1.json
@@ -52,7 +62,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1/edit
   def edit
-    @show = @user.shows.find(params[:id])
+    @show = Show.find(params[:id])
   end
 
   # POST /shows
@@ -82,7 +92,11 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       if @show.update_attributes(params[:show])
-        format.html { redirect_to @show, notice: 'Show was successfully updated.' }
+        if @user.admin? 
+          format.html { redirect_to shows_path, notice: 'Show was successfully updated.' }
+        else 
+          format.html { redirect_to [@user, @show], notice: 'Show was successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

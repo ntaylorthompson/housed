@@ -12,8 +12,13 @@
 			<li><%= link_to "Home", root_path %></li>		
 		</ul>
 		
+		
+		
           <% if signed_in? %>
 			<ul class="nav">
+				
+				
+				
             <% if current_user.musician? %>
 				<li><%= link_to "Create", new_user_show_path(current_user) %></li>
 				<li><%= link_to "Manage", current_user %></li>
@@ -39,13 +44,16 @@
 	                </li>
 	              </ul>
 	            </li>
+						</ul>
+			
+			
 			
           <% else %>
 			<ul class="nav pull-right">				
             	<li><%= link_to "Sign in", signin_path %></li>
 			</ul>
           <% end %>
-			</ul>
+
 			<% unless current_user.nil? %>
 				<%if current_user.admin? %>
 					<%= render 'layouts/admin_header' %>

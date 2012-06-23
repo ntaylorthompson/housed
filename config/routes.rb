@@ -4,7 +4,9 @@ Housed::Application.routes.draw do
   resources :fans
 
   get "hosts/show"
-
+  
+  resources :shows, :guests, :only => [:index]
+  resources :shows, :only => [:edit]
   resources :users do
     resources :shows do
       resources :guests do

@@ -1,23 +1,35 @@
 <h1>Listing guests</h1>
 
-<table>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+    </section>
+  </aside>
+	
+<div class ="span10">
+	
+	
+<table class="table table-striped">
   <tr>
     <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Tickets</th>
+    <th>Ticket Emails</th>
+    <th>Interested</th>
   </tr>
 
-<% @guests.each do |user| %>
+<% @guests.each do |i| %>
   <tr>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= i.email %></td>
+    <td><%= i.tickets %></td>
+    <td><%= i.ticket_emails %></td>
+    <td><%= i.interested %></td>
+
   </tr>
 <% end %>
 </table>
+</div>
+</div>
+<br>
 
-<br />
 
-<%= link_to 'New User', new_user_path %>

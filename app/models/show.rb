@@ -1,6 +1,6 @@
 class Show < ActiveRecord::Base
   attr_accessible :date, :host_em, :location, :ticket_price, :tickets_max,
-                  :tickets_min, :time, :tickets_sold
+                  :tickets_min, :time, :tickets_sold, :complete
 #  belongs_to :host_id, class_name: "User"
   belongs_to :user
   has_many :guests
@@ -10,6 +10,4 @@ class Show < ActiveRecord::Base
             :tickets_max, :tickets_min, presence: true
 
 #  validates :musician_id, presence: true
-
-  
 end
