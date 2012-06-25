@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
   
-#  before_filter :get_show
+  before_filter :admin_user,     only: [:destroy, :index, :edit, :update]
   
   def get_show
     @show = Show.find(params[:show_id] )

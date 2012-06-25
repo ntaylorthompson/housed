@@ -2,10 +2,11 @@ class ShowsController < ApplicationController
   # GET /shows
   # GET /shows.json
   
-  before_filter :signed_in_user,
-                only: [:index, :edit, :update, :destroy, :following, :followers]
-  before_filter :correct_user,   only: [ :edit]
+  before_filter :signed_in_user, only: [:edit, :update, :destroy]
+  before_filter :correct_user,   only: [:edit]
   before_filter :admin_user, only: [:index, :destroy]
+ 
+    
   
   #THIS IS REALLY MESSY NOW
   before_filter :get_user, except: [:index, :edit]
@@ -92,7 +93,7 @@ class ShowsController < ApplicationController
 
     respond_to do |format|
       if @show.update_attributes(params[:show])
-        if @user.admin? 
+        if current_user.admin? 
           format.html { redirect_to shows_path, notice: 'Show was successfully updated.' }
         else 
           format.html { redirect_to [@user, @show], notice: 'Show was successfully updated.' }

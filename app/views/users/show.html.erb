@@ -1,4 +1,4 @@
-<% provide(@shows, @user.name) %>
+<% provide(@shows, @user.name) if @user.nil? ==0  %>
 
 
 <h3>Past shows (<%= @user.shows.count - @shows.count %>)</h3>

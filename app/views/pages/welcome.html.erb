@@ -13,5 +13,7 @@ What you see here is a very early version of our site. Our goal is to make it ea
 
 <br><br>
 
-	
+<% if signed_in? %>	
 <%= link_to "Create a show", new_user_show_path(current_user), class: "btn btn-primary btn-large" %>
+
+<%end%>

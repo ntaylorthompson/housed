@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, 
-  :musician, :header, :website, :mp3_1_url, :mp3_2_url
+  :musician, :header, :website, :mp3_1_url, :mp3_2_url, :active, :zip, :travel_radius
   has_secure_password
 
   before_save { |user| user.email = email.downcase }
@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+#  validates :password, length: { minimum: 6 }   DID THIS TO SUBMIT ACTIVATION BUTTON
+#  validates :password_confirmation, presence: true
   
  
   

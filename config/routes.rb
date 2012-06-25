@@ -23,6 +23,8 @@ Housed::Application.routes.draw do
 
   root :to => "pages#home"
 
+  match '/welcome', :to => 'pages#welcome'
+  
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
   match '/help',    :to => 'pages#help'
@@ -31,7 +33,7 @@ Housed::Application.routes.draw do
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   
-  match '/welcome', :to => 'pages#welcome'
+
   match '/artist_info', :to => 'pages#artists'
   match '/host_info', :to => 'pages#hosts'
   match '/fan_info', :to => 'pages#fans'

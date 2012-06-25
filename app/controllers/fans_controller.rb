@@ -1,4 +1,9 @@
 class FansController < ApplicationController
+
+  before_filter :admin_user
+
+
+
   # GET /fans
   # GET /fans.json
   def index

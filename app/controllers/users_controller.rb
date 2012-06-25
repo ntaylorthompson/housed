@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
-  before_filter :signed_in_user, 
-                only: [:index, :edit, :update, :destroy, :following, :followers]
+  before_filter :signed_in_user, only: [ :edit, :update, :destroy, ]                
   before_filter :correct_user,   only: [:edit, :update, :show]
-  before_filter :admin_user,     only: :destroy
-  #before_filter :admin_user, only: :index
+  before_filter :admin_user,     only: [:destroy, :index]
+
 
   def index
     @users = User.all
@@ -20,7 +19,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @shows = @user.shows.where("date > ?", Time.now.end_of_day).paginate(:page => params[:page], :per_page => 5)
+    @shows = @user.shows.where("date > ?", Time.now.yesterday).paginate(:page => params[:page], :per_page => 5)
     @finished_shows = @user.shows.where(complete: nil, date: 10.years.ago..Time.now.yesterday)
     
     @money_owed = 0
@@ -73,7 +72,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        if current_user.admin? 
+          format.html { redirect_to users_path, notice: 'User was successfully updated.' }
+        else 
+          format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        end
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,11 +84,6 @@ class UsersController < ApplicationController
       end
     end
   end
-  
-  def advanced_edit
-  end
-
-  
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -101,16 +99,13 @@ class UsersController < ApplicationController
   
   def sample
   end
-  
-  private
+
+  private       
   
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
+      redirect_to(root_path) unless current_user?(@user) or current_user.admin?
     end
     
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
-    end
-        
 end
+

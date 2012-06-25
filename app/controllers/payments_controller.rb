@@ -1,7 +1,7 @@
 class PaymentsController < ApplicationController
   # GET /payments
   # GET /payments.json
-
+  before_filter :admin_user,     only: [:index, :edit, :update, :destroy]
 
   def confirm
       @guest = Guest.find(params[:referenceId].to_i)

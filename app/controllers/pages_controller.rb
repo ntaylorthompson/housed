@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_filter :signed_in_user, only: :email_settings
-  
+  before_filter :active_user, only: :email_settings
   
   def home
     @guests = 0
