@@ -51,6 +51,7 @@ Housed::Application.routes.draw do
   match 'host_instructions', :to => 'pages#host_instructions'
   
 #  match '/users/:user_id/shows/:show_id/guests/:id/buy(.:format)', :to => 'guests#buy'
+  match '/users/:id/admin_edit', :to => 'users#admin_edit'
   
   resources :payments
     match '/confirm_payment' => 'payments#confirm'

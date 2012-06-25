@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users.json
   before_filter :signed_in_user, only: [ :edit, :update, :destroy, ]                
   before_filter :correct_user,   only: [:edit, :update, :show]
-  before_filter :admin_user,     only: [:destroy, :index]
+  before_filter :admin_user,     only: [:destroy, :index, :admin_edit]
 
 
   def index
@@ -45,7 +45,10 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
+  def admin_edit
+    @user = User.find(params[:id])
+  end  
 
   # POST /users
   # POST /users.json
@@ -57,7 +60,7 @@ class UsersController < ApplicationController
 #        Mailer.user_signup(@user).deliver
         format.html { redirect_to welcome_path, notice: 'User was successfully created.' }
         format.json { render json: welcome_path, status: :created, location: welcome_path }
-        sign_in(@user)
+#        sign_in(@user)
       else
         format.html { render action: "new" }
         format.json { render json: @user.errors, status: :unprocessable_entity }
