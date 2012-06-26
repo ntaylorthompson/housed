@@ -1,4 +1,4 @@
-<%= form_for([current_user, @show, @guest]) do |f| %>
+<%= form_for([@show.user, @show, @guest]) do |f| %>
   <% if @guest.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
@@ -22,7 +22,7 @@
 	
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Continue &raquo;".html_safe, :class => "btn btn-large btn-primary"%>
   </div>
 <% end %>
 

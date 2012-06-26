@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    cost_percentage = Admin.first.cost_percentage
     @user = User.find(params[:id])
     @shows = @user.shows.where("date > ?", Time.now.yesterday).paginate(:page => params[:page], :per_page => 5)
     @finished_shows = @user.shows.where(complete: nil, date: 10.years.ago..Time.now.yesterday)
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
     @finished_shows.each do |i| 
       @money_owed += i.tickets_sold * i.ticket_price
       @total_fans += i.tickets_sold
+    @money_owed *= (1- cost_percentage)
     end
 
     respond_to do |format|

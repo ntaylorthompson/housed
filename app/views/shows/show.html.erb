@@ -14,22 +14,22 @@ p  {
 </style>
 
 <div class="hero-unit">
-	<img usemap="#_bc_customheader_map"src=<%=@user.header%> >
-	
-
-<h1 align="center">
-<%= @user.name %>
-</h1>
-
-<p align="center" style="font-size:small">House Show</p>
+	<% if not @user.header.nil? %>
+		<img usemap="#_bc_customheader_map"src=<%=@user.header%> >
+	<% else %>
+		<h1 align="center">
+		<%= @user.name %>
+		</h1>
+	<% end %>
 <br>
-
-
 <p>
   <b>Date:</b>
-  <%= @show.date %>
+  <%= @show.time.strftime("%l%p")  %>, <%= @show.date.to_formatted_s(:rfc822)  %>
 </p>
-
+<p>
+  <b>Host:</b>
+  <%= @show.host_em %>
+</p>
 <p>
   <b>Location:</b>
   <%= @show.location %>

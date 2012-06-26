@@ -1,31 +1,16 @@
-<h1>Buy tickets</h1><br>
+<style>
 
-<p>
-  <b>Musician:</b>
-  <%= @show.user.name %>
-</p>
-<p>
-  <b>Host:</b>
-  <%= @show.host_em %>
-</p>
-<p>
-  <b>Your email:</b>
-  <%= @guest.email %>
-</p>
+div .center {
+text-align:center; }
 
-<p>
-  <b>Show location:</b>
-  <%= @show.location %>
-</p>
-<p>
-  <b>Show date:</b>
-  <%= @show.date  %>
-</p>
-<p>
-  <b>Show time:</b>
-  <%= @show.time  %>
-</p><br>
+</style>
 
-<h3>Choose how many tickets at <b>$<%= @show.ticket_price %></b> each:</h3><br>
-
-<%= render "form"%>
+<div class="hero-unit buy" >
+	<div class="center">
+		<img usemap="#_bc_customheader_map"src=<%=@show.user.header%> >
+		<h1 class=>Buy tickets</h1><br>
+		<br>
+		<h3>Choose how many tickets at <b>$<%= @show.ticket_price %></b> each:</h3><br>
+		<%= render "form"%>
+	</div>
+</div>

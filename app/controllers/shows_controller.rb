@@ -71,7 +71,7 @@ class ShowsController < ApplicationController
   def create
     @show = @user.shows.build(params[:show])
     @show.build_host(:email => params[:show][:host_email])
-    web_string = (0...4).map{65.+(rand(25)).chr}.join
+    web_string = (0...8).map{65.+(rand(25)).chr}.join
     @show.web_string = (web_string)
     
     respond_to do |format|

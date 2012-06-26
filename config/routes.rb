@@ -1,4 +1,6 @@
 Housed::Application.routes.draw do
+  resources :admins
+
   resources :payments
 
   resources :fans
@@ -42,6 +44,7 @@ Housed::Application.routes.draw do
   match '/guest_thank_you', :to => 'pages#guest_thank_you'
   
   match '/thanks', :to => 'guests#thanks'
+  match '/how_it_works', :to => 'pages#guest_instructions'
   
   match '/host/:web_string', :to => 'hosts#show' , :as =>'host'
   

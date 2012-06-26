@@ -39,6 +39,9 @@ class PagesController < ApplicationController
   def host_instructions
   end
   
+  def guest_instructions
+  end
+  
   def payment_error
   end
   

@@ -1,5 +1,5 @@
 
-
+<div>
 <h1>Host page</h1><br>
 
 <b>Musician: </b>
@@ -26,5 +26,6 @@ $<%= @show.ticket_price %><br>
 <%= render 'guests'%>
 
 <br><br>
-<%= render 'instructions_modal'%>
+<%= link_to "Instructions &raquo;".html_safe, host_info_path, class: "btn btn-large btn-primary" %>
 
+</div>

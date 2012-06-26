@@ -1,4 +1,29 @@
-<h1>Buy tickets</h1><br>
+<style>
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+p  {
+	    margin-left: auto;
+	    margin-right: auto;
+	    width: 13em
+	}
+	
+	div .center {
+	text-align:center; }
+
+</style>
+
+<div class="hero-unit buy" >
+
+		<img usemap="#_bc_customheader_map"src=<%=@show.user.header%> >
+
+
+
+
+<h1 class="center">Buy tickets</h1><br>
 
 <p>
   <b>Musician:</b>
@@ -20,7 +45,7 @@
   <b>Show time:</b>
   <%= @show.time  %>
 </p><br>
-
+<div class="center">
 <h3>Click to purchase <%= @guest.tickets_requested %> tickets for <%= number_to_currency(@cost) %> total:</h3><br>
 
 <%= amazon_simple_pay_form_tag do %>
@@ -29,3 +54,4 @@
   <%= hidden_field_tag 'description', 'Ticket(s)' %>
   <%= image_submit_tag('http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif') %>
 <% end %>
+</div>
