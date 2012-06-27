@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20120626203833) do
     t.integer  "show_id"
   end
 
+  add_index "hosts", ["show_id"], :name => "index_hosts_on_show_id"
+
   create_table "payments", :force => true do |t|
     t.integer  "guest_id"
     t.float    "amount"
@@ -70,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20120626203833) do
     t.integer  "tickets_sold", :default => 0
     t.date     "date"
     t.string   "web_string"
-    t.string   "host_email"
     t.string   "host_em"
     t.time     "time"
     t.boolean  "complete"
