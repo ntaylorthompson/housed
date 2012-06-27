@@ -7,7 +7,7 @@
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag "application" %>
+
 </head>
 <body>
 	<%= render 'layouts/header' %>
@@ -21,4 +21,6 @@
 
 </body>
 
+	<script src="/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" type="text/javascript"></script>
+ 	<%= javascript_include_tag "application" %>
 </html>
