@@ -1,6 +1,6 @@
 class Mailer < ActionMailer::Base
   default from: "n.taylor.thompson@gmail.com"
-  default @greeting = "Hi"
+  default greeting: "Hi"
  
  
   def user_signup(user)
