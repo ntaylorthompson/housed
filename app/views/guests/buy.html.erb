@@ -39,12 +39,9 @@ p  {
 </p>
 <p>
   <b>Show date:</b>
-  <%= @show.date  %>
+  <%= @show.time.strftime("%l%p")  %>, <%= @show.date.to_formatted_s(:rfc822)  %>
 </p>
-<p>
-  <b>Show time:</b>
-  <%= @show.time  %>
-</p><br>
+
 <div class="center">
 <h3>Click to purchase <%= @guest.tickets_requested %> tickets for <%= number_to_currency(@cost) %> total:</h3><br>
 
