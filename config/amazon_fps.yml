@@ -1,5 +1,5 @@
 development: &sandbox
-  access_key: <your sandbox access key>
+  access_key: <'11SEM03K88SD016FS1G2'>
   secret_key: <your sandbox secret key>
 
 test:
