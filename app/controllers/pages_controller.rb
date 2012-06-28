@@ -47,4 +47,7 @@ class PagesController < ApplicationController
   
   def guest_thank_you
   end
+  
+  def signup_0
+  end
 end

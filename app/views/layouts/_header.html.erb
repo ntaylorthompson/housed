@@ -9,16 +9,16 @@
       <a class="brand" href="#">Housed</a>
       <div class="nav-collapse">
         <ul class="nav">
-			<li><%= link_to "Home", root_path %></li>		
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "About", about_path %></li>
+			<li><%= link_to "Story", story_path %></li>
+					
 		</ul>
 		
 		
 		
           <% if signed_in? %>
-			<ul class="nav">
-				
-				
-				
+			<ul class="nav">				
             <% if current_user.musician? %>
 				<li><%= link_to "Create show", new_user_show_path(current_user) %></li>
 				<li><%= link_to "Manage shows", current_user %></li>
@@ -30,7 +30,8 @@
 			<li><%= link_to "Help", help_path %></li>
 			</ul>			
 			
-			<ul class="nav pull-right">			
+			<ul class="nav pull-right">	
+				<li class="divider-vertical"></li>		
 	            <li id="fat-menu" class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                Account <b class="caret"></b>
@@ -51,7 +52,8 @@
 			
           <% else %>
 			<ul class="nav pull-right">				
-            	<li><%= link_to "Sign in", signin_path %></li>
+            	<li class="divider-vertical"></li>
+				<li><%= link_to "Sign in", signin_path %></li>
 			</ul>
           <% end %>
 

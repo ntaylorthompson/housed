@@ -28,7 +28,8 @@ Housed::Application.routes.draw do
   match '/welcome', :to => 'pages#welcome'
   
   match '/contact', :to => 'pages#contact'
-  match '/about',   :to => 'pages#about'
+  match '/story',   :to => 'pages#about'
+  match '/about',   :to => 'pages#overview'  
   match '/help',    :to => 'pages#help'
   
   match '/signup',  :to => 'users#new'
@@ -42,6 +43,7 @@ Housed::Application.routes.draw do
   match '/email_settings', :to => 'pages#email_settings'
   match '/payment_error', :to => 'pages#payment_error'
   match '/guest_thank_you', :to => 'pages#guest_thank_you'
+  match '/signup_0', :to => 'pages#signup_0'
   
   match '/thanks', :to => 'guests#thanks'
   match '/how_it_works', :to => 'pages#guest_instructions'

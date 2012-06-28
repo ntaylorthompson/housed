@@ -1,0 +1,96 @@
+<header class="jumbotron subhead" id="overview">
+  <h1>Overview</h1>
+  <p class="lead">We are a new way to enjoy live music. We make it easy to schedule, host, and find underground house concerts.</p>
+</header>
+
+
+
+<div class="accordion" id="accordion2">
+   <div class="accordion-group">
+     <div class="accordion-heading">
+       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+         <h3>For musicians</h3>
+       </a>
+     </div>
+     <div id="collapseOne" class="accordion-body collapse in">
+       <div class="accordion-inner">
+
+			<h3>Our vision for musicians</h3>
+			Our goal is to make it easier for artists to manage the business aspects of their work and focus on the music. We want to create a new music economy that revolves around house shows as a performance venue. Performing in fans' homes creates a more intimate connection that lets fans enjoy the music more and connect more deeply with the musician. We are building our platform to do three things: (1) make the logistics of house shows easy, (2) create cultural knowledge for house shows so that mainstream audiences are willing to pay, and (3) create a fan base to host and attend shows so that thousands of musicians can ear a decent living from a house show economy.<br>
+
+
+			<br><h3>How it works now</h3><br>
+			<ol>(1) <b>Sign up. </b>Upload a custom header and sample music.</ol>
+			<ol>(2)<b> Create shows.</b> Add the host email, location, and date to generate two custom web pages - one for the host, one for fans to buy tickets.</ol>
+			<ol>(3) <b>Manage your shows.</b> See how many tickets have been sold, customize thank-you and reminder emails sent to fans</ol>
+			<ol>(4) <b>Play shows.</b> Get paid and automatically receive emails of all fans who came.</ol>
+
+			<br><h3>How it will work</h3><br>
+			<ul><b>•Schedule availability.</b> List your availability by time and date. Enter dates, locations, and a travel radius and hosts can find you based on that availability.</ul>
+			<ul><b>•Confirm shows.</b> Confirm shows and get minimum ticket numbers, where hosts guarantee to bring at least 20 fans per show.</ul>
+			<ul><b>•Integrate social media.</b> Integrate host and fan signup and show promotion with Facebook - so you can sell more tickets and get more fans.</ul>
+
+			 <br>
+			<%= link_to "Sign up &raquo;".html_safe , signup_path, class: "btn btn-primary btn-large" %>
+
+       </div>
+     </div>
+   </div>
+   <div class="accordion-group">
+     <div class="accordion-heading">
+       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+         <h3>For hosts</h3>
+       </a>
+     </div>
+     <div id="collapseTwo" class="accordion-body collapse">
+       <div class="accordion-inner">
+
+			<h3>Our vision for hosts</h3>
+			Our goal is to make it easier for fans to find and enjoy live music. We want to create a new music ecosystem that revolves around house shows as a performance venue, creating a more intimate connection with musicians that lets you enjoy their music more. We are building our platform to do three things: (1) make it easy to find musicians and schedule house shows, (2) create cultural knowledge for house shows to become mainstream, and (3) allow fans to search local shows through their social networks.<br>
+
+
+			<br><h3>How it works now</h3><br>
+			In our alpha release, musicians invite hosts for specific shows. We generate a page for each show that allows hosts to monitor who's coming, as well as an instructions page that outlines the process and a page for fans to buy tickets. Hosts can also sign up for our beta release - to be among the first users to search musicians and schedule their own shows. <br>
+
+			<br><h3>How it will work</h3><br>
+			<ul><b>•Sign up.</b> Browse musicians available to host, and shows available to attend based on geography, date, and your musical preferences.</ul>
+			<ul><b>•Customize alerts.</b> Customize how much you want to hear from us - receive email or Facebook alerts when musicians are available near you.</ul>
+			<ul><b>•Integrate social media.</b> Invite friends to shows you host on Facebook.</ul>
+			<ul><b>•Screen fans through social networks.</b> When fans search for shows, only people with a mutual friend on Facebook can see a show.</ul>
+
+			 <br>
+			<%= link_to "Sign up &raquo;".html_safe , new_fan_path, class: "btn btn-primary btn-large" %>
+
+
+       </div>
+     </div>
+   </div>
+   <div class="accordion-group">
+     <div class="accordion-heading">
+       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+         <h3>For fans</h3>
+       </a>
+     </div>
+     <div id="collapseThree" class="accordion-body collapse">
+       <div class="accordion-inner">
+
+
+			<h3>Our vision for fans</h3>
+			Our goal is to make it easier for fans to find and enjoy live music. We want to create a music ecosystem that revolves around house shows as a performance venue, allowing a more intimate connection with musicians that lets you enjoy their music more. We are building our platform to do three things: (1) make it easy to find musicians, (2) create cultural knowledge for house shows to become more accessible, and (3) allow fans to find local shows through their social networks and musical tastes.<br>
+
+
+			<br><h3>How it works now</h3><br>
+			In our alpha release, hosts invite their friends to a show. We generate a page for every show that highlights the musician, provides show details, and lets fans buy tickets. Fans can also sign up for our beta release - to be among the first users to search shows in their city and schedule shows of their own. <br>
+
+			<br><h3>How it will work</h3><br>
+			<ul><b>•Sign up.</b> Browse shows available to attend and musicians available to host based on geography, date, and your musical preferences.</ul>
+			<ul><b>•Customize alerts.</b> Customize how much you want to hear from us - receive email or Facebook alerts when musicians are available near you, or when you travel.</ul>
+			<ul><b>•Screen through Facebook.</b> When fans search for shows, you'll only be able to see shows that have a mutual Facebook friend who's going. This minimizes sketch for hosts and ensures you'll always have someone interesting to meet.</ul>
+
+			 <br>
+			<%= link_to "Sign up &raquo;".html_safe , new_fan_path, class: "btn btn-primary btn-large" %>
+
+       </div>
+     </div>
+   </div>
+ </div>
