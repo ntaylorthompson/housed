@@ -24,15 +24,6 @@ class PagesController < ApplicationController
   def welcome
   end
   
-  def artists
-  end
-  
-  def hosts
-  end
-  
-  def fans
-  end
-  
   def email_settings
   end
   
@@ -48,6 +39,4 @@ class PagesController < ApplicationController
   def guest_thank_you
   end
   
-  def signup_0
-  end
 end
