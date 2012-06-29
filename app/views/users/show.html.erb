@@ -16,7 +16,9 @@ For <b><%= @total_fans%></b> fans and <b><%= @finished_shows.count %></b> shows.
 
   <div class="span10">
     <% if @user.shows.any? %>
-      <h3>Upcoming shows (<%= @shows.count %>)</h3> 	  
+		<div class="page-header">
+      <h3>Upcoming shows (<%= @shows.count %>)</h3> 
+	  	</div>
 
 		<%= render 'shared/shows'%>
 <%= will_paginate @shows %>

@@ -1,36 +1,36 @@
 <table class="table table-striped" >
-  <tr>
-    <th>Date </th>
-    <th>Time </th>
-    <th>Location</th>
-    <th>Host</th>
-
-    <th>Musician</th>
-    <th>Ticket price</th>
-    <th>Tickets min</th>
-    <th>Tickets max</th>
-    <th>Tickets sold</th>
-    <th>Link to Host page</th>
-    <th></th>
-  </tr>
+	<thead>
+  	<tr>
+	    <th>Date </th>
+	    <th>Time </th>
+	    <th>Location</th>
+	    <th>Host</th>
+	    <th>Ticket price</th>
+	    <th>Tickets min</th>
+	    <th>Tickets max</th>
+	    <th>Tickets sold</th>
+	    <th>Host page URL</th>
+	    <th></th>
+	  </tr>
+	</thead>
 
 <% @shows.each do |show| %>
   <tr>
-    <td><%= show.date.to_formatted_s(:rfc822)    %></td>
+    <td><%= link_to show.date.to_formatted_s(:rfc822), user_show_path(current_user, show)    %></td>
     <td><%= show.time.to_formatted_s(:time) if not show.time.nil? %></td>
     <td><%= show.location %></td>
 	<td><%= show.host_em %></td>
-
-    <td><%= show.user_id %></td>
-    <td><%= show.ticket_price %></td>
+    <td><%= number_to_currency(show.ticket_price) %></td>
     <td><%= show.tickets_min %></td>
     <td><%= show.tickets_max %></td>
     <td><%= show.tickets_sold %></td>
     <td><%= link_to host_url(show.web_string), host_url(show.web_string) %></td>
-
-    <td><%= link_to 'Show', user_show_path(current_user, show) %></td>
 <% if current_user.admin? %>
-    <td><%= link_to 'Edit', edit_show_path(show) %></td>
+    <td> <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                 edit_show_path(show), :class => 'btn btn-mini' %></td>
+
+
+
 <% end %>
   </tr>
 <% end %>
