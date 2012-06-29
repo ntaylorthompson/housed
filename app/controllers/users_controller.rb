@@ -39,10 +39,13 @@ class UsersController < ApplicationController
 
   # GET /users/new
   # GET /users/new.json
-  def new
+  def new_musician
     @user = User.new
   end
-
+  
+  def new_fan
+    @user = User.new
+  end
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])

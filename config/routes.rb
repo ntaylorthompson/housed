@@ -31,37 +31,26 @@ Housed::Application.routes.draw do
   match '/story',   :to => 'pages#about'
   match '/about',   :to => 'pages#overview'  
   match '/help',    :to => 'pages#help'
-  
-  match '/signup',  :to => 'users#new'
-  match '/signin',  :to => 'sessions#new'
-  match '/signout', :to => 'sessions#destroy'
-  
-
-  match '/artist_info', :to => 'pages#artists'
-  match '/host_info', :to => 'pages#hosts'
-  match '/fan_info', :to => 'pages#fans'
   match '/email_settings', :to => 'pages#email_settings'
   match '/payment_error', :to => 'pages#payment_error'
   match '/guest_thank_you', :to => 'pages#guest_thank_you'
-  match '/signup_0', :to => 'pages#signup_0'
-  
-  match '/thanks', :to => 'guests#thanks'
   match '/how_it_works', :to => 'pages#guest_instructions'
-  
-  match '/host/:web_string', :to => 'hosts#show' , :as =>'host'
-  
-  
-  match '/sample', :to => 'users#sample'
-  
-  match 'host_instructions', :to => 'pages#host_instructions'
-  
-#  match '/users/:user_id/shows/:show_id/guests/:id/buy(.:format)', :to => 'guests#buy'
-  match '/users/:id/admin_edit', :to => 'users#admin_edit'
+    
+  match '/signup_musician',  :to => 'users#new_musician'
+  match '/signup_fan',  :to => 'users#new_fan'
+  match '/signin',  :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
+    
+  match '/thanks', :to => 'guests#thanks'
   
   resources :payments
     match '/confirm_payment' => 'payments#confirm'
-    
 
+#  match '/users/:user_id/shows/:show_id/guests/:id/buy(.:format)', :to => 'guests#buy'
+  match '/users/:id/admin_edit', :to => 'users#admin_edit'
+  match 'host_instructions', :to => 'pages#host_instructions'  
+  match '/sample', :to => 'users#sample'
+  match '/host/:web_string', :to => 'hosts#show' , :as =>'host'
   
   
   # The priority is based upon order of creation:

@@ -1,0 +1,63 @@
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+
+<div class="control-group">
+  <%= f.label :name, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :name, :class => 'text_field' %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :email, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :email, :class => 'text_field' %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label "Home zip", :class => 'control-label' %>
+  <div class="controls">
+    <%= f.number_field :zip, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label "Travel radius (miles)", :class => 'control-label' %>
+  <div class="controls">
+    <%= f.select :travel_radius, [10,25,50,100], :class => 'number_field' %>
+  </div>
+</div>
+
+
+  <div class="control-group">
+    <%= f.label :website, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :website, :class => 'text_field' %>
+    </div>
+  </div>
+
+
+
+	<div class="control-group">
+	  <%= f.label :password, :class => 'control-label' %>
+	  <div class="controls">
+	    <%= f.text_field :password, :class => 'text_field' %>
+	  </div>
+	</div>
+	<div class="control-group">
+	  <%= f.label :password_confirmation, :class => 'control-label' %>
+	  <div class="controls">
+	    <%= f.text_field :password_confirmation, :class => 'text_field' %>
+	  </div>
+	</div>
+	
+	<%= f.hidden_field :musician, :value => 1 %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
+  </div>
+
+
+
+
+
+<% end %>
