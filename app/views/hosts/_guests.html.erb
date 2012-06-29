@@ -10,7 +10,7 @@
   <tr>
     <td><%= user.email %></td>
     <td><%= user.tickets %></td>
-    <td><%= user.created_at.to_formatted_s(:rfc822) %></td>
+    <td><%= user.created_at.to_date.to_formatted_s(:rfc822) %></td>
   </tr>
 <% end %>
 </table>
