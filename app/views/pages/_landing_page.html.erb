@@ -1,26 +1,29 @@
 <style>
-#home { padding: 41px;
+#home { padding: 36px;
 		margin-bottom: 31px;
 		margin-left: 0px;
 		-webkit-border-radius: 6px;
 		-moz-border-radius: 6px;
 		border-radius: 6px}
+		
+#small {font-size:50px;}
+
 </style>
 <div class="container span4 ">
-	<div class="hero-unit span3 offset" id="home">
-		<h1>Musicians</h1>
+	<div class="hero-unit span3" id="home">
+		<h1 id="small">Musicians</h1>
 		<p>Spend more time on music.<br> Less time on logistics.</p>
 		<%= link_to "Sign up &raquo;".html_safe , signup_musician_path, class:"btn btn-primary btn-large" %>
 	</div>
 	<div class="hero-unit span3" id="home">
-		<h1>Fans</h1>
+		<h1 id="small">Fans</h1>
 		<p>Find musicians to host. <br> Shows to see. </p>
 		<%= link_to "Sign up &raquo;".html_safe , signup_fan_path, class:"btn btn-primary btn-large" %>
 	</div>
 </div>
 
 <div class="container">
-<div class="span7">
+<div class="span8">
 	<%= render 'carousel' %>
 </div>
 </div>

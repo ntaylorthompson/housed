@@ -38,6 +38,7 @@ Housed::Application.routes.draw do
     
   match '/signup_musician',  :to => 'users#new_musician'
   match '/signup_fan',  :to => 'users#new_fan'
+  match '/signup',  :to => 'users#signup'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
     
