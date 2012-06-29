@@ -1,39 +1,39 @@
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-	<div class="control-group">
-	  <%= f.label :header, :class => 'control-label' %>
-	  <div class="controls">
-	    <%= f.text_area :header, :class => 'text_area' %>
-	  </div>
-	</div>
-	<div class="control-group">
-	  <%= f.label :mp3_1_url, :class => 'control-label' %>
-	  <div class="controls">
-	    <%= f.text_area :mp3_1_url, :class => 'text_area' %>
-	  </div>
-	</div>
-	<div class="control-group">
-	  <%= f.label :mp3_2_url, :class => 'control-label' %>
-	  <div class="controls">
-	    <%= f.text_area :mp3_2_url, :class => 'text_area' %>
-	  </div>
-	</div>
-	<div class="control-group">
-	  <%= f.label :active, :class => 'control-label' %>
-	  <div class="controls">
-	    <%= f.check_box :active, :class => 'check_box' %>
-	  </div>
-	</div>
-  <div class="control-group">
-    <%= f.label :musician, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :musician, :class => 'check_box' %>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
-  </div>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
+  <div class="field">
+    <%= f.label "Header URL" %><br />
+    <%= f.text_field :header %>
+  </div>
+  <div class="field">
+    <%= f.label "MP3 1 URL" %><br />
+    <%= f.text_field :mp3_1_url %>
+  </div>
+  <div class="field">
+    <%= f.label "MP3 2 URL" %><br />
+    <%= f.text_field :mp3_2_url %>
+  </div>
+  <div class="field">
+    <%= f.label :musician %><br />
+    <%= f.check_box :musician %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+ 
+  
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>
