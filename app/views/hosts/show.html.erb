@@ -22,10 +22,13 @@ $<%= @show.ticket_price %><br>
 
 
 <br>
-<h3> Guests (<%= @show.guests.count %>)</h3>
-<%= render 'guests'%>
+<div class="page-header">
+	<h3> Tickets sold (<%= @show.tickets_sold %>)</h3>
+</div>
+
+	<%= render 'guests'%>
 
 <br><br>
-<%= link_to "Instructions &raquo;".html_safe, host_info_path, class: "btn btn-large btn-primary" %>
+<%= link_to "Instructions &raquo;".html_safe, about_path, class: "btn btn-large btn-primary" %>
 
 </div>

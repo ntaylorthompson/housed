@@ -1,35 +1,37 @@
-<h1>Listing guests</h1>
-
-
-<div class="row">
-  <aside class="span4">
-    <section>
-    </section>
-  </aside>
-	
-<div class ="span10">
-	
-	
+<%- model_class = Guest.new.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
 <table class="table table-striped">
-  <tr>
-    <th>Email</th>
-    <th>Tickets</th>
-    <th>Ticket Emails</th>
-    <th>Interested</th>
-  </tr>
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:interested) %></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:email) %></th>
+      <th><%= model_class.human_attribute_name(:show_id) %></th>
+      <th><%= model_class.human_attribute_name(:tickets_requested) %></th>
+      <th><%= model_class.human_attribute_name(:tickets) %></th>
+      <th><%= model_class.human_attribute_name(:cost) %></th>
+      <th><%= model_class.human_attribute_name(:ticket_emails) %></th>
 
-<% @guests.each do |i| %>
-  <tr>
-    <td><%= i.email %></td>
-    <td><%= i.tickets %></td>
-    <td><%= i.ticket_emails %></td>
-    <td><%= i.interested %></td>
 
-  </tr>
-<% end %>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @guests.each do |guest| %>
+      <tr>
+        <td><%= guest.interested %></td>
+        <td><%= guest.id %></td>
+        <td><%= guest.email %></td>
+        <td><%= guest.show_id %></td>
+        <td><%= guest.tickets_requested %></td>
+        <td><%= guest.tickets %></td>
+        <td><%= guest.cost %></td>
+        <td><%= guest.ticket_emails %></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-</div>
-</div>
-<br>
-
-

@@ -1,15 +1,16 @@
-<table>
+<table class="table table-striped" >
+<thead>
   <tr>
     <th>Guest email</th>
     <th>Tickets</th>
     <th>Purchase date</th>
   </tr>
-
+</thead>
 <% @show.guests.each do |user| %>
   <tr>
     <td><%= user.email %></td>
     <td><%= user.tickets %></td>
-    <td><%= user.created_at %></td>
+    <td><%= user.created_at.to_formatted_s(:rfc822) %></td>
   </tr>
 <% end %>
 </table>

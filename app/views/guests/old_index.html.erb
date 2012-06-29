@@ -1,0 +1,35 @@
+<h1>Listing guests</h1>
+
+
+<div class="row">
+  <aside class="span4">
+    <section>
+    </section>
+  </aside>
+	
+<div class ="span10">
+	
+	
+<table class="table table-striped">
+  <tr>
+    <th>Email</th>
+    <th>Tickets</th>
+    <th>Ticket Emails</th>
+    <th>Interested</th>
+  </tr>
+
+<% @guests.each do |i| %>
+  <tr>
+    <td><%= i.email %></td>
+    <td><%= i.tickets %></td>
+    <td><%= i.ticket_emails %></td>
+    <td><%= i.interested %></td>
+
+  </tr>
+<% end %>
+</table>
+</div>
+</div>
+<br>
+
+

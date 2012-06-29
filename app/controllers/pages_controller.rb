@@ -27,12 +27,6 @@ class PagesController < ApplicationController
   def email_settings
   end
   
-  def host_instructions
-  end
-  
-  def guest_instructions
-  end
-  
   def payment_error
   end
   
