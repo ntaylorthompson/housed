@@ -10,7 +10,7 @@
 	    <th>Tickets max</th>
 	    <th>Tickets sold</th>
 	    <th>Host page URL</th>
-	    <th></th>
+	    <th>Actions</th>
 	  </tr>
 	</thead>
 
@@ -25,9 +25,10 @@
     <td><%= show.tickets_max %></td>
     <td><%= show.tickets_sold %></td>
     <td><%= link_to host_url(show.web_string), host_url(show.web_string) %></td>
-<% if current_user.admin? %>
+<% if current_user.admin? or show.tickets_sold == 0 %>
     <td> <%= link_to t('.edit', :default => t("helpers.links.edit")),
                  edit_show_path(show), :class => 'btn btn-mini' %></td>
+<% else %> <td></td>
 
 
 
