@@ -1,47 +1,59 @@
-<%= form_for([current_user, @show]) do |f| %>
-  <% if @show.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@show.errors.count, "error") %> prohibited this show from being saved:</h2>
+<%= form_for [current_user, @show], :html => { :class => 'form-horizontal' } do |f| %>
 
-      <ul>
-      <% @show.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="control-group">
+  <%= f.label :date, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.date_select :date, :class => 'date_select' %>
+  </div>
+</div>
+<div class="control-group">
+  <%= f.label :time, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.time_select :time, {:minute_step => 15}, :class => 'time_select' %>
+  </div>
+</div>
+
+  <div class="control-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location, :class => 'text_field' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
   </div>
-  <div class="field">
-    <%= f.label :time %> <br />
-    <%= f.time_select :time, {:minute_step => 15} %>  <b>Guests will arrive 30 minutes before the scheduled time.</b>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+<div class="control-group">
+    <%= f.label "Host email", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :host_em, :class => 'text_field' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :host_email %><br />
-    <%= f.text_field :host_em %>
+  <div class="control-group">
+    <%= f.label :ticket_price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :ticket_price, [10,15,20],:class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tickets_min, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :tickets_min, [20,25,30],:class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tickets_max, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :tickets_max, [25,50,75,100,200], :class => 'number_field' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :ticket_price %><br />
-    <%= f.select :ticket_price, [10,15,20] %>
-  </div>
-  <div class="field">
-    <%= f.label :tickets_min %><br />
-    <%= f.select :tickets_min, [20,25,30] %>
-  </div>
-  <div class="field">
-    <%= f.label :tickets_max %><br />
-    <%= f.number_field :tickets_max %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+
+  
+
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                shows_path, :class => 'btn' %>
   </div>
 <% end %>
