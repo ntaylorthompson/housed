@@ -1,46 +1,45 @@
-<h1>Thanks!</h1><br>
-<p>
-  <b>Musician:</b>
-  <%= @show.user.name %>
-</p>
-<p>	
-  <b>Host:</b>
-  <%= @show.host_em %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @show.location %>
-</p>
-<p>
-  <b>Date:</b>
-  <%= @show.date  %>
-</p>
-<p>
-  <b> Time:</b>
-  <%= @show.time  %>
-</p>
-<p>
-  <b>Tickets:</b>
-  <%= @guest.tickets %>
-</p>
-<p>
-  <b>Total cost:</b>
-  <%= number_to_currency(@guest.tickets * @show.ticket_price)  %>
-</p><br>
+<style>
+.home { padding: 30px;}
+</style>
+<div class="container span12">	<h1>Thanks!</h1><br> </div>
 
 <% if @guest.interested.nil? %>
-<h3>Would you like to sign up to look for other house shows in your area?</h3><br>
-
-	<%= form_for([@show.user, @show, @guest]) do |f| %>
-	    <%= f.hidden_field :interested, :value => 0 %>
-		<%= f.submit "No &raquo;".html_safe, :class => "btn btn-primary btn-large" %>
-	<% end %>
-	<%= form_for([@show.user, @show, @guest]) do |f| %>
-	    <%= f.hidden_field :interested, :value => 1 %>
-		<%= f.submit "Yes &raquo;".html_safe, :class => "btn btn-primary btn-large"%>
-	<% end %>
+<%= render 'shared/interest' %>
+</div>		
 <% elsif @guest.interested? %>
 	<h3>Great! We'll let you know as soon as searchable shows goes live.</h3>
 <% end %>
+
+<div class="container span8">
+<h2>Your tickets:</h2>
+	<p>
+	  <b>Musician:</b>
+	  <%= @show.user.name %>
+	</p>
+	<p>	
+	  <b>Host:</b>
+	  <%= @show.host_em %>
+	</p>
+
+	<p>
+	  <b>Location:</b>
+	  <%= @show.location %>
+	</p>
+	<p>
+	  <b>Date:</b>
+	  <%= @show.date  %>
+	</p>
+	<p>
+	  <b> Time:</b>
+	  <%= @show.time  %>
+	</p>
+	<p>
+	  <b>Tickets:</b>
+	  <%= @guest.tickets %>
+	</p>
+	<p>
+	  <b>Total cost:</b>
+	  <%= number_to_currency(@guest.tickets * @show.ticket_price)  %>
+	</p>
+</div>
 

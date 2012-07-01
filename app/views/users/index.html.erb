@@ -1,36 +1,5 @@
-<h1>Listing musicians</h1>
+<div class="page-header">
+	<h1>Users</h1>
+</div>
 
-<table class="table table-striped">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>Active?</th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', "/users/#{user.id}/admin_edit" %> </td>
-    <td><%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %></td>
-	<td><% if user.active? %>
-			<%= true %>
-		<% else %>
-			<%= form_for(user) do |f| %>
-		    	<%= f.hidden_field :active, :value => 1 %>
-				<%= f.submit "Activate &raquo;".html_safe, :class => "btn btn-primary" %>
-			<% end %>
-		<% end %>
-	</td>
-  </tr>
-<% end %>
-</table>
-
-
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<%= render 'index'%>

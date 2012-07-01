@@ -3,6 +3,7 @@
   <tr>
     <th>Guest email</th>
     <th>Tickets</th>
+    <th>Other emails</th>
     <th>Purchase date</th>
   </tr>
 </thead>
@@ -10,6 +11,7 @@
   <tr>
     <td><%= user.email %></td>
     <td><%= user.tickets %></td>
+    <td><%= user.ticket_emails %></td>
     <td><%= user.created_at.to_date.to_formatted_s(:rfc822) %></td>
   </tr>
 <% end %>

@@ -14,6 +14,19 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
+  
+  def index_musicians
+    @users = User.musician
+  end 
+  
+  def index_musicians
+    @users = User.musician
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
+    end
+  end
 
   # GET /users/1
   # GET /users/1.json
