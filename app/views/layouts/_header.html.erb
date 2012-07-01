@@ -9,6 +9,7 @@
       <a class="brand" href="#">Housed</a>
       <div class="nav-collapse">
         <ul class="nav">
+			<li class="divider-vertical"></li>
 			<li><%= link_to "Home", root_path %></li>
 			<% unless signed_in? %>
 				<li><%= link_to "About", about_path %></li>
@@ -22,12 +23,12 @@
             <% if current_user.musician? %>
 				<li><%= link_to "Create show", new_user_show_path(current_user) %></li>
 				<li><%= link_to "Manage shows", current_user %></li>
+				<li><%= link_to "Schedule tour", user_availabilities_path(current_user) %></li>
+				<li class="divider-vertical"></li>
 			<% end%>
 			
-<!--			<li><%= link_to "Host" %></li>
-			<li><%= link_to "Find" %></li>
--->
-	
+			<li><%= link_to "Host a musician" %></li>
+			<li><%= link_to "Find a show" %></li>
 			<li><%= link_to "Help", help_path %></li>
 			</ul>			
 			

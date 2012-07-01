@@ -1,25 +1,21 @@
 Housed::Application.routes.draw do
   resources :admins
-
   resources :payments
-
-  resources :fans
 
   get "hosts/show"
   
   resources :shows, :guests, :only => [:index]
   resources :shows, :only => [:edit]
   resources :users do
+    resources :availabilities
     resources :shows do
       resources :guests do
         get 'buy', :on => :member
       end
     end
   end
-  
+
   resources :hosts
-
-
     
   resources :sessions, :only => [:new, :create, :destroy]
 

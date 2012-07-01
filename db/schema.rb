@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626203833) do
+ActiveRecord::Schema.define(:version => 20120701181537) do
 
   create_table "admins", :force => true do |t|
     t.float    "cost_percentage"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "availabilities", :force => true do |t|
+    t.date     "start"
+    t.date     "end"
+    t.string   "zip"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+    t.integer  "travel_radius"
   end
 
   create_table "fans", :force => true do |t|
@@ -48,8 +58,6 @@ ActiveRecord::Schema.define(:version => 20120626203833) do
     t.integer  "show_id"
   end
 
-  add_index "hosts", ["show_id"], :name => "index_hosts_on_show_id"
-
   create_table "payments", :force => true do |t|
     t.integer  "guest_id"
     t.float    "amount"
@@ -72,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120626203833) do
     t.integer  "tickets_sold", :default => 0
     t.date     "date"
     t.string   "web_string"
+    t.string   "host_email"
     t.string   "host_em"
     t.time     "time"
     t.boolean  "complete"
