@@ -42,6 +42,8 @@ Housed::Application.routes.draw do
       
   match '/thanks', :to => 'guests#thanks'
   
+  match '/index_admin', to: 'shows#index_admin'
+  
   resources :payments
     match '/confirm_payment' => 'payments#confirm'
 

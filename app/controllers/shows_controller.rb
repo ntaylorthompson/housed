@@ -10,7 +10,7 @@ class ShowsController < ApplicationController
     
   
   #THIS IS REALLY MESSY NOW
-  before_filter :get_user, except: [:index, :edit]
+  before_filter :get_user, except: [:index, :index_admin, :edit]
   
   def get_user
     @user = User.find(params[:user_id])
@@ -18,13 +18,15 @@ class ShowsController < ApplicationController
 
   def index
     @shows = Show.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @shows }
     end
   end
-    
+
+  def index_admin
+    @shows = Show.all
+  end    
 #OLD INDEX - FOR NESTED ROUTES, MAY BE NEEDED SOMEWHERE
 #  def index
 #    @show = @user.shows.find(params[:id])

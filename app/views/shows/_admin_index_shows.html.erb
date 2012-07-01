@@ -1,6 +1,5 @@
 <table class="table table-striped" >
   <tr>
-    <th>Date Past? </th>
     <th>Transaction Complete? </th>
     <th>Revenue</th>
     <th>Date </th>
@@ -10,15 +9,14 @@
 
     <th>Musician</th>
     <th>Ticket price</th>
-    <th>Host page</th>
     <th>Tickets sold</th>
-    <th>Payment issued?</th>
+    <th>Host page</th>
+    <th>Payment status</th>
     <th></th>
   </tr>
 
 <% @shows.each do |show| %>
   <tr>
-	<td><%= show.date.past?   %></td>
 	<td><%= show.complete   %></td>
 	<td><%= number_to_currency(show.tickets_sold * show.ticket_price)%></td>
     <td><%= show.date.to_formatted_s(:rfc822)    %></td>
@@ -31,15 +29,18 @@
 
     <td><%= show.tickets_sold %></td>
     <td><%= link_to host_url(show.web_string), host_url(show.web_string) %></td>
-<% if show.user.nil? or not show.date.past? or show.complete %>
-	<%=0	%>
-<%else %>
-	<td><%= form_for([show.user,show]) do |f| %>
-	    	<%= f.hidden_field :complete, :value => 1 %>
-			<%= f.submit "No &raquo;".html_safe, :class => "btn btn-primary" %>
+	<td><% if show.user.nil? %>
+			no user
+		<% elsif not show.date.past? %>	
+			show not past
+			
+		<% elsif show.complete %>
+			issued
+		<%else %>
+			<%= form_for([show.user,show]) do |f| %>
+			    	<%= f.hidden_field :complete, :value => 1 %>
+					<%= f.submit "Mark issued &raquo;".html_safe, :class => "btn btn-primary" %>
+			<% end %>
 		<% end %>
-	</td>
-<% end %>
-  </tr>
-<% end %>
+	<% end %></tr>
 </table>
