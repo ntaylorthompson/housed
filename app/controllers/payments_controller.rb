@@ -66,7 +66,6 @@ class PaymentsController < ApplicationController
   # GET /payments/new.json
   def new
     @payment = Payment.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @payment }

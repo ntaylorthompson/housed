@@ -4,7 +4,10 @@
   <b>Cost percentage:</b>
   <%= @admin.cost_percentage %>
 </p>
-
+<p>
+  <b>Maximum travel radius:</b>
+  <%= @admin.max_travel_radius %> miles
+</p>
 
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>

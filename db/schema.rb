@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701223336) do
+ActiveRecord::Schema.define(:version => 20120702031150) do
 
   create_table "admins", :force => true do |t|
     t.float    "cost_percentage"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "max_travel_radius"
   end
 
   create_table "availabilities", :force => true do |t|

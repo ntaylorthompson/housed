@@ -19,13 +19,11 @@ class UsersController < ApplicationController
     @users = User.musician
   end 
   
-  def index_musicians
-    @users = User.musician
+  def index_musicians_for_fans
+    @locations = Location.musician.near([current_user.location.latitude, current_user.location.longitude],
+                  Admin.first.max_travel_radius)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
+
   end
 
   # GET /users/1
