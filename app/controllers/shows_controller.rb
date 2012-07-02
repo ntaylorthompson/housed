@@ -56,6 +56,7 @@ class ShowsController < ApplicationController
   def new
     @show = @user.shows.new
     @location = @show.build_location
+    @host = @show.build_host    
 
  #   respond_to do |format|               taken out for Heroku
   #    format.html # new.html.erb
@@ -74,7 +75,7 @@ class ShowsController < ApplicationController
   # POST /shows.json
   def create
     @show = @user.shows.build(params[:show])
-    @show.build_host(:email => params[:show][:host_email])
+    @show.build_host(:email => params[:host][:email])
     @show.build_location(:address => params[:location][:address])
     web_string = (0...8).map{65.+(rand(25)).chr}.join
     @show.web_string = (web_string)
@@ -97,9 +98,9 @@ class ShowsController < ApplicationController
     @show = @user.shows.find(params[:id])
 
     respond_to do |format|
-      if @show.update_attributes(params[:show])
+      if @show.update_attributes(params[:show]) and @show.location.update_attributes(address: params[:location][:address]) and @show.host.update_attributes(email: params[:host][:email])        
         if current_user.admin? 
-          format.html { redirect_to shows_path, notice: 'Show was successfully updated.' }
+          format.html { redirect_to [@user, @show], notice: 'Show was successfully updated.' }
         else 
           format.html { redirect_to [@user, @show], notice: 'Show was successfully updated.' }
         end
@@ -135,7 +136,7 @@ class ShowsController < ApplicationController
     
     def show_empty?
       show = Show.find(params[:id])
-      redirect_to(:back) if show.tickets_sold > 0 
+      redirect_to(:back) if show.tickets_sold > 0 unless current_user.admin?
     end
     
 end

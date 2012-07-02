@@ -12,7 +12,7 @@
     <th>Tickets sold</th>
     <th>Host page</th>
     <th>Payment status</th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @shows.each do |show| %>
@@ -22,7 +22,7 @@
     <td><%= show.date.to_formatted_s(:rfc822)    %></td>
     <td><%= show.time.to_formatted_s(:time) if not show.time.nil? %></td>
     <td><%= show.location.address %></td>
-	<td><%= show.host_em %></td>
+	<td><%= show.host.email %></td>
 
     <td><%= show.user_id %></td>
     <td><%= number_to_currency(show.ticket_price) %></td>
@@ -42,5 +42,8 @@
 					<%= f.submit "Mark issued &raquo;".html_safe, :class => "btn btn-primary" %>
 			<% end %>
 		<% end %>
+		<td> <%= link_to t('.edit', :default => t("helpers.links.edit")),
+	                 edit_user_show_path(show.user, show), :class => 'btn btn-mini' %></td>
+	
 	<% end %></tr>
 </table>
