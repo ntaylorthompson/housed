@@ -6,7 +6,7 @@
     <th>Time </th>
     <th>Location</th>
     <th>Host</th>
-
+    <th>Public?</th>
     <th>Musician</th>
     <th>Ticket price</th>
     <th>Tickets sold</th>
@@ -19,11 +19,11 @@
   <tr>
 	<td><%= show.complete   %></td>
 	<td><%= number_to_currency(show.tickets_sold * show.ticket_price)%></td>
-    <td><%= show.date.to_formatted_s(:rfc822)    %></td>
+    <td><%= link_to show.date.to_formatted_s(:rfc822), [show.user, show]    %></td>
     <td><%= show.time.to_formatted_s(:time) if not show.time.nil? %></td>
     <td><%= show.location.address %></td>
 	<td><%= show.host.email %></td>
-
+	<td><%= show.public? %></td>
     <td><%= show.user_id %></td>
     <td><%= number_to_currency(show.ticket_price) %></td>
 

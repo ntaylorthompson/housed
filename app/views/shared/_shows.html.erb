@@ -5,6 +5,7 @@
 	    <th>Time </th>
 	    <th>Location</th>
 	    <th>Host</th>
+	    <th>Public?</th>
 	    <th>Ticket price</th>
 	    <th>Tickets min</th>
 	    <th>Tickets max</th>
@@ -20,6 +21,7 @@
     <td><%= show.time.to_formatted_s(:time) if not show.time.nil? %></td>
     <td><%= show.location.address %></td>
 	<td><%= show.host.email %></td>
+	<td><%= show.public? %></td>
     <td><%= number_to_currency(show.ticket_price) %></td>
     <td><%= show.tickets_min %></td>
     <td><%= show.tickets_max %></td>

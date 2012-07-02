@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, 
-  :musician, :header, :website, :mp3_1_url, :mp3_2_url, :active, :zip, :travel_radius
+  :musician, :header, :website, :mp3_1_url, :mp3_2_url, :active, :zip, :travel_radius, :style
   has_secure_password
 
   before_save { |user| user.email = email.downcase }

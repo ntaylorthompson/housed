@@ -1,20 +1,18 @@
 <% provide(@shows, @user.name) if @user.nil? ==0  %>
 
-
+<div class="row">
 <h3>Past shows (<%= @user.shows.count - @shows.count %>)</h3>
 Outstanding payment: <%= number_to_currency(@money_owed)%><br>
 For <b><%= @total_fans%></b> fans and <b><%= @finished_shows.count %></b> shows. 
+</div>
 <br>
 <br>
 
 
 <div class="row">
-  <aside class="span4">
-    <section>
-    </section>
-  </aside>
 
-  <div class="span10">
+
+  <div class="">
     <% if @user.shows.any? %>
 		<div class="page-header">
       <h3>Upcoming shows (<%= @shows.count %>)</h3> 

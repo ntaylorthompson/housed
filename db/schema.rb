@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702170001) do
+ActiveRecord::Schema.define(:version => 20120702203839) do
 
   create_table "admins", :force => true do |t|
     t.float    "cost_percentage"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "max_travel_radius"
+    t.integer  "default_fan_travel_radius"
   end
 
   create_table "availabilities", :force => true do |t|
@@ -27,15 +28,6 @@ ActiveRecord::Schema.define(:version => 20120702170001) do
     t.datetime "updated_at",    :null => false
     t.integer  "user_id"
     t.integer  "travel_radius"
-  end
-
-  create_table "fans", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.boolean  "host_interest"
-    t.boolean  "fan_interest"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
   end
 
   create_table "guests", :force => true do |t|
@@ -95,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20120702170001) do
     t.string   "web_string"
     t.time     "time"
     t.boolean  "complete"
+    t.boolean  "public"
   end
 
   add_index "shows", ["web_string"], :name => "index_shows_on_web_string", :unique => true
@@ -114,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20120702170001) do
     t.string   "website"
     t.integer  "travel_radius"
     t.boolean  "active"
+    t.string   "style"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

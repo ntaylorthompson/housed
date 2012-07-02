@@ -17,11 +17,17 @@ class ShowsController < ApplicationController
   end
 
   def index
-    @shows = Show.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @shows }
-    end
+    if params[:search].present?      
+      @user_location = params[:search]
+      @current_location_human = @user_location
+      @admin = 50
+    else
+      @admin = Admin.first.default_fan_travel_radius
+      @user_location = [current_user.location.latitude, current_user.location.longitude]
+      @current_location_human = current_user.location.address
+    end 
+    
+    @locations = Location.includes(:show).show.near(@user_location, @admin)
   end
 
   def index_admin

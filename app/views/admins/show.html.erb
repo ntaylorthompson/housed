@@ -8,6 +8,11 @@
   <b>Maximum travel radius:</b>
   <%= @admin.max_travel_radius %> miles
 </p>
+<p>
+  <b>Default fan travel radius:</b>
+  <%= @admin.default_fan_travel_radius %> miles
+</p>
+
 
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>

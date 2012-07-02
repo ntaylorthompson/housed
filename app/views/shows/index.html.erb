@@ -1,60 +1,36 @@
-<%- model_class = Show.new.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<div class="page-header container">
+	<%= form_tag shows_path, :method => :get do %>
+	  <p>
+	    <%= text_field_tag :search, params[:search] %>
+	    <%= submit_tag "Search Nearby", :name => nil %>
+	<% end %>
+	
+<h1>Shows</h1>
+<p class="lead">We're listing upcoming shows within <%= @admin %> miles of <%= @current_location_human %>. Search by other locations above.</p>
 </div>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:location) %></th>
-      <th><%= model_class.human_attribute_name(:host_id) %></th>
-      <th><%= model_class.human_attribute_name(:user_id) %></th>
-      <th><%= model_class.human_attribute_name(:ticket_price) %></th>
-      <th><%= model_class.human_attribute_name(:tickets_min) %></th>
-      <th><%= model_class.human_attribute_name(:tickets_max) %></th>
-      <th><%= model_class.human_attribute_name(:tickets_sold) %></th>
-      <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:web_string) %></th>
-      <th><%= model_class.human_attribute_name(:host_email) %></th>
-      <th><%= model_class.human_attribute_name(:host_em) %></th>
-      <th><%= model_class.human_attribute_name(:time) %></th>
-      <th><%= model_class.human_attribute_name(:complete) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @shows.each do |show| %>
-      <tr>
-        <td><%= link_to show.id, show_path(show) %></td>
-        <td><%= show.location %></td>
-        <td><%= show.host_id %></td>
-        <td><%= show.user_id %></td>
-        <td><%= show.ticket_price %></td>
-        <td><%= show.tickets_min %></td>
-        <td><%= show.tickets_max %></td>
-        <td><%= show.tickets_sold %></td>
-        <td><%= show.date %></td>
-        <td><%= show.web_string %></td>
-        <td><%= show.host_email %></td>
-        <td><%= show.host_em %></td>
-        <td><%= show.time %></td>
-        <td><%= show.complete %></td>
-        <td><%=l show.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_show_path(show), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      show_path(show),
-                      :method => :delete,
-                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	  <thead>
+	  <tr>
+	    <th>Date</th>
+	    <th>Musician</th>
+		<th>Style</th>
+		<th>Location</th>
+		<th>Distance</th>
+		<th></th>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_show_path,
-            :class => 'btn btn-primary' %>
+	  </tr>
+	  </thead>
+<% @locations.each do |location|  %>
+  <tr>
+	<% show = location.show %>
+	<% user = show.user %>
+	<% unless not show.public? %>
+	<td><%= show.date.to_formatted_s(:rfc822) %> </td>	
+    <td><%= link_to user.name, user.website %></td>
+	<td><%= user.style %> </td>
+	<td><%= location.address %> </td>
+	<td><%= location.distance_from(@user_location).round(2)%> miles</td>
+    <td><%= link_to "Buy tickets &raquo;".html_safe, [user, show], :class => 'btn btn-primary btn-mini' %></td>
+  </tr>
+<% end %><% end %>
+</table>

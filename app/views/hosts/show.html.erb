@@ -19,7 +19,13 @@ $<%= @show.ticket_price %><br>
 
 <b>Maximum tickets: </b>
 <%= @show.tickets_max %><br>
-
+<b>Ticket availability: </b>
+	<% if @show.public? %>
+		Public
+	<% else %>
+		Private
+	<% end %>
+<br>
 
 <br>
 <div class="page-header">
