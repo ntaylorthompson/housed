@@ -18,7 +18,7 @@
   <tr>
     <td><%= link_to show.date.to_formatted_s(:rfc822), user_show_path(current_user, show)    %></td>
     <td><%= show.time.to_formatted_s(:time) if not show.time.nil? %></td>
-    <td><%= show.location %></td>
+    <td><%= show.location.address %></td>
 	<td><%= show.host_em %></td>
     <td><%= number_to_currency(show.ticket_price) %></td>
     <td><%= show.tickets_min %></td>
@@ -29,8 +29,6 @@
     <td> <%= link_to t('.edit', :default => t("helpers.links.edit")),
                  edit_show_path(show), :class => 'btn btn-mini' %></td>
 <% else %> <td></td>
-
-
 
 <% end %>
   </tr>

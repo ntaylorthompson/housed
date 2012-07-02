@@ -13,12 +13,15 @@
   </div>
 </div>
 
-  <div class="control-group">
-    <%= f.label :location, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :location, :class => 'text_field' %>
-    </div>
-  </div>
+<%= fields_for @show.location do |location| %>
+	  <div class="control-group">
+	    <%= location.label :location, :class => 'control-label' %>
+	    <div class="controls">
+	      <%= location.text_field :address, :class => 'text_field' %>
+	    </div>
+	  </div>
+  <% end %>	
+	
 <div class="control-group">
     <%= f.label "Host email", :class => 'control-label' %>
     <div class="controls">

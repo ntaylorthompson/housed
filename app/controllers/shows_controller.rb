@@ -41,7 +41,7 @@ class ShowsController < ApplicationController
   def show
     @show = @user.shows.find(params[:id])
     @guests = @show.guests.count
-    @guest = @show.guests.build(params[:guest])
+#    @guest = @show.guests.build(params[:guest])
 #    flash[:show] = @show
  #   flash.keep    
 
@@ -55,6 +55,7 @@ class ShowsController < ApplicationController
   # GET /shows/new.json
   def new
     @show = @user.shows.new
+    @location = @show.build_location
 
  #   respond_to do |format|               taken out for Heroku
   #    format.html # new.html.erb
@@ -74,6 +75,7 @@ class ShowsController < ApplicationController
   def create
     @show = @user.shows.build(params[:show])
     @show.build_host(:email => params[:show][:host_email])
+    @show.build_location(:address => params[:location][:address])
     web_string = (0...8).map{65.+(rand(25)).chr}.join
     @show.web_string = (web_string)
     

@@ -12,12 +12,16 @@
     <%= f.text_field :email, :class => 'text_field' %>
   </div>
 </div>
-<div class="control-group">
-  <%= f.label "Home zip", :class => 'control-label' %>
-  <div class="controls">
-    <%= f.number_field :zip, :class => 'number_field' %>
-  </div>
-</div>
+
+<%= fields_for @user.location do |location| %>
+	  <div class="control-group">
+	    <%= location.label "Home zip code", :class => 'control-label' %>
+	    <div class="controls">
+	      <%= location.text_field :address, :class => 'text_field' %>
+	    </div>
+	  </div>
+  <% end %>
+
 
 <div class="control-group">
   <%= f.label "Travel radius (miles)", :class => 'control-label' %>

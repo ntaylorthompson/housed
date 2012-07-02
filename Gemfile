@@ -8,6 +8,7 @@ gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'faker', '1.0.1'
 gem 'remit'
+gem 'geocoder'
 
 
 

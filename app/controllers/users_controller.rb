@@ -54,10 +54,12 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new_musician
     @user = User.new
+    @location = @user.build_location
   end
   
   def new_fan
     @user = User.new
+    @location = @user.build_location
   end
   # GET /users/1/edit
   def edit
@@ -72,6 +74,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.build_location(:address => params[:location][:address])
     
     respond_to do |format|
       if @user.save

@@ -6,8 +6,12 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
   
-  has_many :shows 
-  has_many :availabilities
+  has_many :shows, dependent: :destroy 
+  has_many :availabilities, dependent: :destroy 
+  has_one :location, dependent: :destroy 
+  
+  accepts_nested_attributes_for :location
+  
   scope :musician, where(musician: true)
 
   validates :name,  presence: true, length: { maximum: 50 }

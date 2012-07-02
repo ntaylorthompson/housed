@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701181537) do
+ActiveRecord::Schema.define(:version => 20120701223336) do
 
   create_table "admins", :force => true do |t|
     t.float    "cost_percentage"
@@ -58,6 +58,23 @@ ActiveRecord::Schema.define(:version => 20120701181537) do
     t.integer  "show_id"
   end
 
+  add_index "hosts", ["show_id"], :name => "index_hosts_on_show_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+    t.integer  "show_id"
+    t.integer  "availability_id"
+  end
+
+  add_index "locations", ["availability_id"], :name => "index_locations_on_availability_id"
+  add_index "locations", ["show_id"], :name => "index_locations_on_show_id"
+  add_index "locations", ["user_id"], :name => "index_locations_on_user_id"
+
   create_table "payments", :force => true do |t|
     t.integer  "guest_id"
     t.float    "amount"
@@ -80,7 +97,6 @@ ActiveRecord::Schema.define(:version => 20120701181537) do
     t.integer  "tickets_sold", :default => 0
     t.date     "date"
     t.string   "web_string"
-    t.string   "host_email"
     t.string   "host_em"
     t.time     "time"
     t.boolean  "complete"
