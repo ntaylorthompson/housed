@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702031150) do
+ActiveRecord::Schema.define(:version => 20120702170001) do
 
   create_table "admins", :force => true do |t|
     t.float    "cost_percentage"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20120702031150) do
   create_table "availabilities", :force => true do |t|
     t.date     "start"
     t.date     "end"
-    t.string   "zip"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "user_id"
@@ -46,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20120702031150) do
     t.integer  "show_id"
     t.integer  "tickets",           :default => 0
     t.boolean  "interested"
-    t.integer  "payment_id"
     t.float    "cost"
     t.text     "ticket_emails"
     t.integer  "tickets_requested"
@@ -79,16 +77,13 @@ ActiveRecord::Schema.define(:version => 20120702031150) do
   create_table "payments", :force => true do |t|
     t.integer  "guest_id"
     t.float    "amount"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.string   "transaction_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "payments", ["guest_id"], :name => "index_payments_on_guest_id"
 
   create_table "shows", :force => true do |t|
-    t.string   "location"
-    t.integer  "host_id"
     t.integer  "user_id"
     t.integer  "ticket_price"
     t.integer  "tickets_min"
@@ -98,7 +93,6 @@ ActiveRecord::Schema.define(:version => 20120702031150) do
     t.integer  "tickets_sold", :default => 0
     t.date     "date"
     t.string   "web_string"
-    t.string   "host_em"
     t.time     "time"
     t.boolean  "complete"
   end
@@ -118,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20120702031150) do
     t.text     "mp3_1_url",       :limit => 255
     t.text     "mp3_2_url",       :limit => 255
     t.string   "website"
-    t.integer  "zip"
     t.integer  "travel_radius"
     t.boolean  "active"
   end
