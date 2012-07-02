@@ -1,0 +1,16 @@
+<div class="container">
+<div class="hero-unit span3 home">
+<h3>Would you like to sign up to search for other house shows in your area?</h3><br>
+<div class="container span1 offset">
+	<%= form_for([@show.user, @show, @guest]) do |f| %>
+	    <%= f.hidden_field :interested, :value => 0 %>
+		<%= f.submit "No &raquo;".html_safe, :class => "btn btn-primary btn-large" %>
+	<% end %>
+</div>		
+<div class="container span1">
+	<%= form_for([@show.user, @show, @guest]) do |f| %>
+	    <%= f.hidden_field :interested, :value => 1 %>
+		<%= f.submit "Yes &raquo;".html_safe, :class => "btn btn-primary btn-large"%>
+	<% end %>
+</div>
+</div>

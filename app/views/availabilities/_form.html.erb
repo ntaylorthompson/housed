@@ -1,0 +1,37 @@
+<%= form_for [@user, @availability], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :start, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :start, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :end, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :end, :class => 'date_select' %>
+    </div>
+  </div>
+
+<%= fields_for @availability.location do |location| %>
+	  <div class="control-group">
+	    <%= location.label "Zip code", :class => 'control-label' %>
+	    <div class="controls">
+	      <%= location.text_field :address, :class => 'text_field' %>
+	    </div>
+	  </div>
+  <% end %>
+
+
+	<div class="control-group">
+	  <%= f.label "Travel radius (miles)", :class => 'control-label' %>
+	  <div class="controls">
+	    <%= f.select :travel_radius, [10,25,50,100], :class => 'number_field' %>
+	  </div>
+	</div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                user_availabilities_path(@user), :class => 'btn' %>
+  </div>
+<% end %>

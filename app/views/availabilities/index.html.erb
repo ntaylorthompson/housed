@@ -1,0 +1,43 @@
+<%- model_class = Availability.new.class -%>
+<div class="page-header">
+  <h1><%=@user.name%>'s availability</h1>
+<p class="lead">Default location <%= @user.travel_radius %> miles from zipcode <%= @user.location.address %>.</p>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:start) %></th>
+      <th><%= model_class.human_attribute_name(:end) %></th>
+      <th>Zip code</th>
+      <th><%= model_class.human_attribute_name(:travel_radius) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @availabilities.each do |availability| %>
+      <tr>
+        <td><%= link_to availability.id, [@user, availability] %></td>
+        <td><%= availability.start.to_formatted_s(:rfc822) %></td>
+        <td><%= availability.end.to_formatted_s(:rfc822) %></td>
+        <td><%= availability.location.address %></td>
+        <td><%= availability.travel_radius %></td>
+        <td><%=l availability.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_user_availability_path(@user, availability), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      [@user, availability],
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_user_availability_path(@user),
+            :class => 'btn btn-primary' %>

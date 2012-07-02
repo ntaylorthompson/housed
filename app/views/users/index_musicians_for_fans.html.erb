@@ -1,0 +1,40 @@
+<div class="page-header">
+	<h1>Musicians</h1>
+	<p class="lead">Choose artists to host.</p>
+</div>
+
+<table class="table table-striped">
+	  <thead>
+	  <tr>
+	    <th>Tour dates</th>
+	    <th>Musician</th>
+		<th>Style</th>
+		<th>Home base</th>
+		<th>Distance</th>
+
+	  </tr>
+	  </thead>
+<% @locations.each do |location| %>
+
+	<% if location.user_id.nil? %>
+		<% availability = location.availability %>
+		<% if availability.start.past? %>
+		<% else %>
+			<tr>
+			<% user = location.availability.user %>				
+			<td><%= availability.start.to_formatted_s(:rfc822) %> - <%= availability.end.to_formatted_s(:rfc822) %></td>
+			<td><%= link_to user.name, user.website %></td>
+			<td><%= user.style %> </td>
+			<td><%= location.address %> </td>
+			<td><%= location.distance_from(@user_location).round(2)%> miles</td>
+		<%end%>	 
+	<% else %>
+		<% user = location.user %>
+		<td></td>
+		<td><%= link_to user.name, user.website %></td>
+		<td><%= user.style %> </td>
+		<td><%= location.address %> </td>
+		<td><%= location.distance_from(@user_location).round(2)%> miles</td>
+	<% end %></tr>
+<% end %>
+</table>

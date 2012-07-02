@@ -1,12 +1,13 @@
 <div class="page-header container">
-	<%= form_tag shows_path, :method => :get do %>
-	  <p>
-	    <%= text_field_tag :search, params[:search] %>
-	    <%= submit_tag "Search Nearby", :name => nil %>
-	<% end %>
-	
+
 <h1>Shows</h1>
-<p class="lead">We're listing upcoming shows within <%= @admin %> miles of <%= @current_location_human %>. Search by other locations above.</p>
+<p class="lead">We're listing upcoming shows within <%= @admin %> miles of <%= @current_location_human %>. Search by other locations below.</p>
+<%= form_tag shows_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Nearby", :name => nil %>
+<% end %>
+
 </div>
 <table class="table table-striped">
 	  <thead>

@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   
   def index_musicians_for_fans
     @user_location = [current_user.location.latitude, current_user.location.longitude]
-    @locations = Location.musician.near(@user_location,
-                  Admin.first.max_travel_radius)
+    @locations = Location.musician.near(@user_location, Admin.first.max_travel_radius)
+    @locations += Location.availability.near(@user_location, Admin.first.max_travel_radius)
   end
 
   # GET /users/1
