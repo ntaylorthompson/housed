@@ -6,33 +6,40 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Housed</a>
+      <a class="brand" href="<%= root_url %>">Housed</a>
       <div class="nav-collapse">
         <ul class="nav">
-			<li class="divider-vertical"></li>
-			<li><%= link_to "Home", root_path %></li>
+			<li class="divider-vertical"></li>		
+			
 			<% unless signed_in? %>
-				<li><%= link_to "About", about_path %></li>
-				<li><%= link_to "Story", story_path %></li>
-				<li><%= link_to "Contact", contact_path %></li>
-			<% end %>		
-		</ul>
-		
-          <% if signed_in? %>
-			<ul class="nav">				
+				<li><%= link_to "About us", about_path %></li>
+				<li><%= link_to "Our story", story_path %></li>
+				<li><%= link_to "Contact us", contact_path %></li>
+			<% end %>
+
+						
+
+
+			<% if signed_in? %>
             <% if current_user.musician? %>
+				<ul class="nav">
 				<li><%= link_to "Create show", new_user_show_path(current_user) %></li>
 				<li><%= link_to "Manage shows", current_user %></li>
 				<li><%= link_to "Schedule tour", user_availabilities_path(current_user) %></li>
-				<li class="divider-vertical"></li>
+					            	<li class="divider-vertical"></li>
 			<% end%>
-			
-			<li><%= link_to "Host a musician", find_musicians_path %></li>
-			<li><%= link_to "Find a show", shows_path %></li>
+				
+				<li><%= link_to "Host a musician", find_musicians_path %></li>
+				<li><%= link_to "Find a show", shows_path %></li>
+			<% end%>		
+
 			<li><%= link_to "Help", help_path %></li>
-			</ul>			
-			
-			<ul class="nav pull-right">	
+			</ul></ul>		
+				
+			<ul class="nav pull-right">			
+        <% if signed_in? %>	
+
+				
 				<li class="divider-vertical"></li>		
 	            <li id="fat-menu" class="dropdown">
 	              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -47,16 +54,17 @@
 	                </li>
 	              </ul>
 	            </li>
-						</ul>
+
 			
 			
 			
           <% else %>
-			<ul class="nav pull-right">				
+			<ul class="nav pull-right">	
             	<li class="divider-vertical"></li>
 				<li><%= link_to "Sign in", signin_path %></li>
-			</ul>
+
           <% end %>
+						</ul>
 
 			<% unless current_user.nil? %>
 				<%if current_user.admin? %>
