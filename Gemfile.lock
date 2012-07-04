@@ -69,6 +69,7 @@ GEM
     multi_json (1.3.5)
     pg (0.12.2)
     polyglot (0.3.3)
+    populator (1.0.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -137,6 +138,7 @@ DEPENDENCIES
   geocoder
   jquery-rails
   pg
+  populator
   rails (= 3.2.3)
   remit
   sass-rails (~> 3.2.3)

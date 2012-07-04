@@ -1,6 +1,6 @@
 <div class="page-header">
 	<h1>Musicians</h1>
-	<p class="lead">Choose artists to host.</p>
+	<p class="lead">Choose artists to host near <%= current_user.location.address%>.</p>
 </div>
 
 <table class="table table-striped">
@@ -30,11 +30,12 @@
 		<%end%>	 
 	<% else %>
 		<% user = location.user %>
-		<td></td>
-		<td><%= link_to user.name, user.website %></td>
-		<td><%= user.style %> </td>
-		<td><%= location.address %> </td>
-		<td><%= location.distance_from(@user_location).round(2)%> miles</td>
-	<% end %></tr>
+		<% if user.musician?%>
+			<td></td>
+			<td><%= link_to user.name, user.website %></td>
+			<td><%= user.style %> </td>
+			<td><%= location.address %> </td>
+			<td><%= location.distance_from(@user_location).round(2)%> miles</td>
+		<% end %><% end %></tr>
 <% end %>
 </table>

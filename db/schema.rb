@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702203839) do
+ActiveRecord::Schema.define(:version => 20120703180821) do
 
   create_table "admins", :force => true do |t|
     t.float    "cost_percentage"
@@ -69,8 +69,9 @@ ActiveRecord::Schema.define(:version => 20120702203839) do
   create_table "payments", :force => true do |t|
     t.integer  "guest_id"
     t.float    "amount"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "transaction_id"
   end
 
   add_index "payments", ["guest_id"], :name => "index_payments_on_guest_id"
